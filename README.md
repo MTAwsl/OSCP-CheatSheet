@@ -835,13 +835,38 @@ socat tcp-listen:9002,reuseaddr,fork tcp:192.168.122.228:5968 &
 ```c
 ssh user@<RHOST> -oKexAlgorithms=+diffie-hellman-group1-sha1
 
-ssh -R 8080:<LHOST>:80 <RHOST>
+// Local forwarding localip:localport:remoteip:remoteport
+
 ssh -L 8000:127.0.0.1:8000 <USERNAME>@<RHOST>
 ssh -N -L 1234:127.0.0.1:1234 <USERNAME>@<RHOST>
-
 ssh -L 80:<LHOST>:80 <RHOST>
 ssh -L 127.0.0.1:80:<LHOST>:80 <RHOST>
 ssh -L 80:localhost:80 <RHOST>
+
+// Local Dynamic forwarding
+ssh -N -D 0.0.0.0:1080 <RHOST>
+
+// Remote Port forwarding, Bind in RHOST
+ssh -N -R 127.0.0.1:8080:<LHOST>:80 <RHOST>
+
+// Remote Dynamic forwarding
+ssh -N -R 1080 <RHOST>
+
+
+```
+
+#### SShuttle
+
+```c
+
+sshuttle -r <RHOST>:<RPORT> 10.4.50.0/24 172.16.50.0/24
+
+```
+
+#### Netsh
+
+```c
+netsh interface portproxy add v4tov4 listenport=<LPORT> listenaddress=<LHOST> connectport=<RPORT> connectaddress=<RHOST>
 ```
 
 #### Time and Date
@@ -3870,6 +3895,14 @@ or
 Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server' -Name "fDenyTSConnections" -Value 0;
 Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -Name "UserAuthentication" -Value 1;
 Enable-NetFirewallRule -DisplayGroup "Remote Desktop";
+```
+
+##### Add inbound/outbound rules
+
+```c
+netsh advfirewall firewall add rule action=allow name=tunnelI dir=in protocal=tcp localport='80,443,1337,4444'
+netsh advfirewall firewall add rule action=allow name=tunnelO dir=out protocal=tcp remoteport='80,443,1337,4444'
+
 ```
 
 ##### Privileges and Permissions
