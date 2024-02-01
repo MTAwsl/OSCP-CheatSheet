@@ -835,7 +835,7 @@ socat tcp-listen:9002,reuseaddr,fork tcp:192.168.122.228:5968 &
 ```c
 ssh user@<RHOST> -oKexAlgorithms=+diffie-hellman-group1-sha1
 
-// Local forwarding localip:localport:remoteip:remoteport
+// Local forwarding (first part -> second part) localip:localport:remoteip:remoteport
 
 ssh -L 8000:127.0.0.1:8000 <USERNAME>@<RHOST>
 ssh -N -L 1234:127.0.0.1:1234 <USERNAME>@<RHOST>
