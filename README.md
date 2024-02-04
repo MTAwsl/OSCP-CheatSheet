@@ -3843,6 +3843,13 @@ wmic qfe get Caption,Description,HotFixID,InstalledOn
 driverquery.exe /v /fo csv | ConvertFrom-CSV | Select-Object 'Display Name', 'Start Mode', Path
 ```
 
+##### SMB List Shares
+```c
+
+net view \\<RHOST>
+
+```
+
 ##### AppLocker Bypass List
 
 ```
