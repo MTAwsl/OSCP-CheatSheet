@@ -3871,6 +3871,11 @@ wmic qfe get Caption,Description,HotFixID,InstalledOn
 driverquery.exe /v /fo csv | ConvertFrom-CSV | Select-Object 'Display Name', 'Start Mode', Path
 ```
 
+##### Search for files
+```c
+dir . -filter "*.txt" -Recurse | ? {(gc $_.FullName | Measure -Line | Select -Expand Lines) -gt 100 }
+```
+
 ##### SMB List Shares
 ```c
 
