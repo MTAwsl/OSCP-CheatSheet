@@ -723,6 +723,11 @@ sudo ip r add 172.16.1.0/24 dev ligolo
 [Agent : user@target] » listener_add --addr <RHOST>:<LPORT> --to <LHOST>:<LPORT> --tcp
 ```
 
+###### Access to agent's localhost
+```c
+sudo ip route add 240.0.0.1/32 dev ligolo
+```
+
 #### Linux
 
 ##### CentOS
@@ -4092,6 +4097,8 @@ net user <USERNAME>
 tree /f C:\Users\
 tasklist /SVC
 sc query
+sc query -type=all -state=all
+Get-CimInstance -ClassName win32_service | Select Name,State,PathName
 sc qc <SERVICE>
 netsh firewall show state
 schtasks /query /fo LIST /v
